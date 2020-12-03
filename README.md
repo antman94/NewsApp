@@ -1,3 +1,0 @@
-# NewsApp
-HEJHEJ
-TJOHEJ
