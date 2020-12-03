@@ -15,17 +15,31 @@ http://localhost:3000/user
 
 ### Response
 ```
-{
-  "gamesWishList": [
-      "star wars",
-      "halo",
-      "prutt"
-  ],
-  "_id": "5fc8f6216845126870048a2c",
-  "username": "AboveSpring",
-  "password": "12345",
-  "__v": 0
-}     
+[
+  {
+      "gamesWishList": [
+          "star wars",
+          "halo",
+          "prutt"
+      ],
+      "_id": "5fc8f6216845126870048a2c",
+      "username": "AboveSpring",
+      "password": "12345",
+      "__v": 0
+  },
+  {
+      "gamesWishList": [
+          "star wars",
+          "halo",
+          "halo 3",
+          "CS"
+      ],
+      "_id": "5fc90d0fa4231f56e072e1cf",
+      "username": "Knutte1337",
+      "password": "1337",
+      "__v": 0
+  }
+]   
 ```
 #### Status 200 ok
 

@@ -4,7 +4,7 @@ const user = require('./user.js')
 const uri = process.env.DATABASE_URL || "mongodb://localhost:27017/backendusers"
 
 const connectDb = () => {
-  return mongoose.connect(uri, { useNewUrlParser: true });
+  return mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true });
 };
 
 module.exports = {
