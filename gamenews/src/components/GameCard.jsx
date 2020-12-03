@@ -10,14 +10,13 @@ import { Button,
   import PSICON from '@material-ui/icons/Games';
   import PCICON from '@material-ui/icons/DesktopWindows';
 
-  import {
-    AppContainer,
-    GeneralWhiteText } from './common/index.styled';
+  import { GeneralWhiteText } from './common/index.styled';
 
 const useStyles = makeStyles(() => ({
   root: {
+    margin: '15px',
     maxWidth: 345,
-    borderRadius: '15px'
+    borderRadius: '15px',
   },
   media: {
     height: 180
@@ -34,7 +33,6 @@ const useStyles = makeStyles(() => ({
   },
   WishlistButton: {
     left: 135,
-    
   },
 
 }))
@@ -44,37 +42,33 @@ function GameCard({poster, title, content}) {
   const classes = useStyles();
 
   return (
-    <AppContainer>
-
       <Card className={classes.root}>
-      <CardActionArea>
-        <CardMedia
-          className={classes.media}
-          image={poster}
-          title={title + ' poster'}
-        />
-        <CardContent className={classes.CardContainer}>
-          <GeneralWhiteText gutterBottom variant="h5" component="h2" className={classes.GameTitle}>
-            {title}
-          </GeneralWhiteText>
-          <XboxICON className={classes.Icons} />
-          <PSICON className={classes.Icons}/>
-          <GeneralWhiteText variant="body2"  component="p">
-            {content}
-          </GeneralWhiteText>
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary">
-          {'<<Read more'}
-        </Button>
-        <Button className={classes.WishlistButton} size="small" color="primary" >
-          +Wishlist
-        </Button>
-      </CardActions>
+        <CardActionArea>
+          <CardMedia
+            className={classes.media}
+            image={poster}
+            title={title + ' poster'}
+          />
+          <CardContent className={classes.CardContainer}>
+            <GeneralWhiteText gutterBottom variant="h5" component="h2" className={classes.GameTitle}>
+              {title}
+            </GeneralWhiteText>
+            <XboxICON className={classes.Icons} />
+            <PSICON className={classes.Icons}/>
+            <GeneralWhiteText variant="body2"  component="p">
+              {content}
+            </GeneralWhiteText>
+          </CardContent>
+        </CardActionArea>
+        <CardActions>
+          <Button size="small" color="primary">
+            {'<<Read more'}
+          </Button>
+          <Button className={classes.WishlistButton} size="small" color="primary" >
+            +Wishlist
+          </Button>
+        </CardActions>
     </Card>
-      
-    </AppContainer>
   );
 }
 
