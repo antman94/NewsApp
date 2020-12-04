@@ -1,5 +1,5 @@
 import { AppContainer } from './components/common/index.styled';
-import CardComponentContainer from './containers/CardComponentContainer';
+import CardComponentContainer from './containers/CardComponentContainer/index';
 
 function App() {
 

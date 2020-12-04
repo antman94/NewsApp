@@ -1,16 +1,18 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import { addUser } from '../redux/actions/index'
+import { connect } from 'react-redux'
 import { Button, 
   Card, 
   CardActionArea, 
   CardActions, 
   CardContent, 
   CardMedia } from '@material-ui/core';
-  import XboxICON from '@material-ui/icons/SportsEsports';
-  import PSICON from '@material-ui/icons/Games';
-  import PCICON from '@material-ui/icons/DesktopWindows';
+import XboxICON from '@material-ui/icons/SportsEsports';
+import PSICON from '@material-ui/icons/Games';
+import PCICON from '@material-ui/icons/DesktopWindows';
 
-  import { GeneralWhiteText } from './common/index.styled';
+import { GeneralWhiteText } from './common/index.styled';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -37,26 +39,32 @@ const useStyles = makeStyles(() => ({
 
 }))
 
-function GameCard({poster, title, content}) {
+function GameCard(props) {
+
+  useEffect(() => {
+    props.addUser()
+   
+  }, [])
 
   const classes = useStyles();
+  console.log(props.name,'redux');
 
   return (
       <Card className={classes.root}>
         <CardActionArea>
           <CardMedia
             className={classes.media}
-            image={poster}
-            title={title + ' poster'}
+            image={props.poster}
+            title={props.title + ' poster'}
           />
           <CardContent className={classes.CardContainer}>
             <GeneralWhiteText gutterBottom variant="h5" component="h2" className={classes.GameTitle}>
-              {title}
+              {props.title}
             </GeneralWhiteText>
             <XboxICON className={classes.Icons} />
             <PSICON className={classes.Icons}/>
             <GeneralWhiteText variant="body2"  component="p">
-              {content}
+              {props.content}
             </GeneralWhiteText>
           </CardContent>
         </CardActionArea>
@@ -71,5 +79,19 @@ function GameCard({poster, title, content}) {
     </Card>
   );
 }
+function mapStateToProps(state){
+  return{ name: state.name
+    
+  }
+  
+}
 
-export default GameCard;
+function mapDispatchToProps(dispatch){
+  return{ 
+    addUser: () => {
+      dispatch ({type: "SET_USER", payload: "knut"})
+    }
+  }
+  
+}
+export default connect(mapStateToProps, mapDispatchToProps)(GameCard);
