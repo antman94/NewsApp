@@ -1,0 +1,37 @@
+.signinmodal {
+    width: 600px;
+    height: 700px;
+    background-color: black;
+    margin-top: 190px;
+    margin-left: 30%;
+    padding-top: 30px;
+    padding-left: 130px;
+}
+
+.signintext {
+    color: white;
+    margin-left: 80px;
+}
+
+.nameinput {
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 15px;
+    width: 300px;
+    height: 30px;
+    margin-bottom: 30px;
+}
+
+.bottomtext {
+    color: white;
+    margin-left: 30px;
+}
+
+.linktologin {
+    color: greenyellow;
+    margin-left: 60px;
+}
+
+label {
+    color: white;
+}
