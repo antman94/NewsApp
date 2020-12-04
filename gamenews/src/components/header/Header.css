@@ -1,11 +1,23 @@
+.signinmodalbutton {
+    color: greenyellow;
+    background-color: transparent;
+    border: transparent;
+    cursor: pointer;
+}
+
+.signinmodalbutton h3 {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 .signinmodal {
-    width: 600px;
+    width: 900px;
     height: 700px;
-    background-color: black;
+    background-color: #1b1b1b;
     margin-top: 190px;
-    margin-left: 30%;
-    padding-top: 30px;
-    padding-left: 130px;
+    margin-left: 28%;
+    padding-top: 60px;
+    padding-left: 300px;
+    padding-right: 30px;
 }
 
 .signintext {
@@ -13,12 +25,35 @@
     margin-left: 80px;
 }
 
+.closebutton {
+    background-color: transparent;
+    border-radius: 5px;
+    border: 2px solid red;
+    color: white;
+    cursor: pointer;
+    width: 70px;
+    height: 40px;
+    margin-left: 340px;
+}
+
+.signinbutton {
+    background-color: transparent;
+    border-radius: 5px;
+    border: 2px solid greenyellow;
+    color: white;
+    cursor: pointer;
+    width: 70px;
+    height: 40px;
+    margin-left: 340px;
+}
+
 .nameinput {
     background-color: transparent;
     border: 2px solid white;
-    border-radius: 15px;
+    border-radius: 20px;
     width: 300px;
-    height: 30px;
+    height: 40px;
+    margin-top: 8px;
     margin-bottom: 30px;
 }
 
@@ -29,9 +64,50 @@
 
 .linktologin {
     color: greenyellow;
-    margin-left: 60px;
+    margin-left: 90px;
 }
 
 label {
     color: white;
+    margin-left: 64px;
+    font-weight: bold;
 }
+
+.loginmodal {
+    width: 600px;
+    height: 580px;
+    background-color: #1b1b1b;
+    margin-top: 190px;
+    margin-left: 40%;
+    padding-top: 20px;
+    padding-left: 140px;
+    padding-right: 30px;
+    border-radius: 18px;
+    border: 5px solid greenyellow;
+}
+
+.loginclosebutton {
+    background-color: transparent;
+    border: transparent;
+    color: white;
+    cursor: pointer;
+    width: 70px;
+    height: 40px;
+    margin-left: 370px;
+}
+
+.logintext {
+    font-family: XXIX, serif;
+    color: white;
+    margin-left: 44px;
+}
+
+/*.loginnameinput 
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 20px;
+    width: 300px;
+    height: 40px;
+    margin-top: 8px;
+    margin-bottom: 30px;
+}*/
