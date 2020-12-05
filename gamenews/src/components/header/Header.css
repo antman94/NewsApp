@@ -21,8 +21,10 @@
 }
 
 .signintext {
+    font-family: XXIX, serif;
+    font-size: 4rem;
     color: white;
-    margin-left: 80px;
+    margin-left: 45px;
 }
 
 .closebutton {
@@ -45,6 +47,18 @@
     width: 70px;
     height: 40px;
     margin-left: 340px;
+}
+
+.loginbutton {
+    background-color: transparent;
+    border-radius: 5px;
+    border: 2px solid greenyellow;
+    color: white;
+    cursor: pointer;
+    width: 70px;
+    height: 40px;
+    margin-left: 100px;
+    margin-top: 40px;
 }
 
 .nameinput {
@@ -98,8 +112,17 @@ label {
 
 .logintext {
     font-family: XXIX, serif;
+    font-size: 4rem;
     color: white;
     margin-left: 44px;
+}
+
+.loginmodalbutton {
+    background-color: transparent;
+    border: transparent;
+    cursor: pointer;
+    color: greenyellow;
+    margin-left: 20px;
 }
 
 /*.loginnameinput 
