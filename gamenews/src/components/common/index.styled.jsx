@@ -14,17 +14,18 @@ export const GeneralWhiteText = styled(Typography)`
 `
 
 export const CardContainer = styled.div`
-  width: 75%;
+  width: 80%;
   background-color: #151515;
-  min-height: 80vh;
+  min-height: 100vh;
   padding: 15px;
   float: right;
-
-  margin righ auto.
-
 `
 
 export const LeftMenu = styled.div`
-padding: 10px;
-background: #141414;
+width: 20%;
+min-height: 100vh;
+padding-top: 20px;
+padding-left: 35px;
+background: #111111;
+float: left;
 `

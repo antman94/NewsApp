@@ -10,6 +10,7 @@ function App() {
     <div className="App">
       <Header />
       <AppContainer>
+        <Leftmenu />
         <CardComponentContainer />
       </AppContainer>
     </div>

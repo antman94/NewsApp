@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { 
+  AppContainer,
   CardContainer,
  } from '../../components/common/index.styled';
  import GameCard from '../../components/GameCard';
