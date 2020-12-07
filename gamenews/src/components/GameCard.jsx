@@ -1,7 +1,5 @@
 import React,{useEffect} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { addUser } from '../redux/actions/index'
-import { connect } from 'react-redux'
 import { Button, 
   Card, 
   CardActionArea, 
@@ -17,7 +15,8 @@ import { GeneralWhiteText } from './common/index.styled';
 const useStyles = makeStyles(() => ({
   root: {
     margin: '15px',
-    maxWidth: 345,
+    width: '345px',
+    height: '400px',
     borderRadius: '15px',
   },
   media: {
@@ -39,33 +38,27 @@ const useStyles = makeStyles(() => ({
 
 }))
 
-function GameCard(props) {
-
-  useEffect(() => {
-    props.addUser()
-   
-  }, [])
+function GameCard({game}) {
 
   const classes = useStyles();
-  console.log(props.name,'redux');
 
   return (
       <Card className={classes.root}>
         <CardActionArea>
           <CardMedia
             className={classes.media}
-            image={props.poster}
-            title={props.title + ' poster'}
+            image={game.background_image}
+            title={game.name}
           />
           <CardContent className={classes.CardContainer}>
             <GeneralWhiteText gutterBottom variant="h5" component="h2" className={classes.GameTitle}>
-              {props.title}
+              {game.name}
             </GeneralWhiteText>
             <XboxICON className={classes.Icons} />
             <PSICON className={classes.Icons}/>
-            <GeneralWhiteText variant="body2"  component="p">
+            {/* <GeneralWhiteText variant="body2"  component="p">
               {props.content}
-            </GeneralWhiteText>
+            </GeneralWhiteText> */}
           </CardContent>
         </CardActionArea>
         <CardActions>
@@ -79,19 +72,5 @@ function GameCard(props) {
     </Card>
   );
 }
-function mapStateToProps(state){
-  return{ name: state.name
-    
-  }
-  
-}
 
-function mapDispatchToProps(dispatch){
-  return{ 
-    addUser: () => {
-      dispatch ({type: "SET_USER", payload: "knut"})
-    }
-  }
-  
-}
-export default connect(mapStateToProps, mapDispatchToProps)(GameCard);
+export default GameCard;

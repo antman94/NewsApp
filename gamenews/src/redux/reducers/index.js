@@ -1,15 +1,8 @@
-const defaultState = { name: 'Kalle' };
+import { combineReducers } from "redux";
+import games from "./games";
+import game from "./game";
 
-function reducer( state = defaultState, action ) {
-  switch (action.type) {
-    case "SET_USER":
-      return {
-        ...state,
-        name: action.payload
-      }
-    default:
-      return state;
-  }
-}
-
-export default reducer;
+export default combineReducers({
+  games,
+  game
+});

@@ -13,9 +13,10 @@ export const GeneralWhiteText = styled(Typography)`
   font-family: 'Lato';
 `
 export const CardContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
   width: 80%;
   background-color: #151515;
-  min-height: 80vh;
   padding: 15px;
   margin: auto;
 `
