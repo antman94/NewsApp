@@ -12,6 +12,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@font-face {
+  font-family: 'XXIX';
+  src: local('XXIX'), url(./assets/fonts/XXIX.otf) format('truetype');}
+
 #root {
   height: 720px;
 }
