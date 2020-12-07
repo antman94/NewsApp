@@ -7,20 +7,12 @@ import Leftmenu from './components/LeftMenuComponent/LeftMenu';
 function App() {
 
   return (
-<<<<<<< HEAD
-    <AppContainer>
-      <CardComponentContainer />
-      <Leftmenu />
-    </AppContainer>
-    
-=======
     <div className="App">
       <Header />
       <AppContainer>
         <CardComponentContainer />
       </AppContainer>
     </div>
->>>>>>> 5836caed14b18c8b762a25a6a0610a142ec67cd3
   );
 }
 
