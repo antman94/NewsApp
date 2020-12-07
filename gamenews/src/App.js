@@ -1,13 +1,17 @@
+import './App.scss';
+import Header from './components/header/Header';
 import { AppContainer } from './components/common/index.styled';
 import CardComponentContainer from './containers/CardComponentContainer/index';
 
 function App() {
 
   return (
-    <AppContainer>
-      <CardComponentContainer />
-    </AppContainer>
-    
+    <div className="App">
+      <Header />
+      <AppContainer>
+        <CardComponentContainer />
+      </AppContainer>
+    </div>
   );
 }
 
