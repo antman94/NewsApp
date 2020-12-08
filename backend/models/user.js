@@ -7,7 +7,6 @@ const userSchema = new mongoose.Schema({
   },
   password: {
     type: String,
-    unique: true
   },
   gamesWishList: {
     type: Array
