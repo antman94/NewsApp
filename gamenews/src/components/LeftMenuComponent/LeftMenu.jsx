@@ -9,10 +9,12 @@ import MenuList from '@material-ui/core/MenuList';
 import MenuItem from '@material-ui/core/MenuItem';
 
 const LeftMenuStyle = makeStyles(() => ({
-palette: {
-  hover: '#DBFE00',
-}
-
+  root: {
+    '&:hover': {
+      backgroundColor: '#2f2f2f !important',
+      color: '#DBFE00',
+    },
+  },
 }))
 
 function Leftmenu() {
@@ -23,20 +25,20 @@ function Leftmenu() {
       <LeftMenu>
       <GeneralWhiteText>Console</GeneralWhiteText>
         <MenuList>
-          <MenuItem>
-            <GeneralWhiteText classes={classes.palette} variant="inherit">Playstation 4</GeneralWhiteText>
+          <MenuItem className={classes.root}>
+            <GeneralWhiteText className={classes.root} variant="inherit">Playstation 4</GeneralWhiteText>
           </MenuItem>
-          <MenuItem>
-            <GeneralWhiteText variant="inherit">Playstation 5</GeneralWhiteText>
+          <MenuItem className={classes.root}>
+            <GeneralWhiteText className={classes.root} variant="inherit">Playstation 5</GeneralWhiteText>
           </MenuItem>
         </MenuList>
         <GeneralWhiteText>Menu name</GeneralWhiteText>
         <MenuList>
-          <MenuItem>
-            <GeneralWhiteText variant="inherit">Top 30 Games</GeneralWhiteText>
+          <MenuItem className={classes.root}>
+            <GeneralWhiteText className={classes.root} variant="inherit">Top 30 Games</GeneralWhiteText>
           </MenuItem>
-          <MenuItem>
-            <GeneralWhiteText variant="inherit">Release</GeneralWhiteText>
+          <MenuItem className={classes.root}>
+            <GeneralWhiteText className={classes.root} variant="inherit">Release</GeneralWhiteText>
           </MenuItem>
         </MenuList>
       </LeftMenu>
