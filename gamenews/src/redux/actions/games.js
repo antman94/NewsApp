@@ -30,7 +30,7 @@ export const fetchGames = () => async dispatch => {
   await dispatch({ type: FETCH_GAMES_REQUEST });
   try {
     const response = await axios.get(
-      `https://api.rawg.io/api/games${key}`
+      `https://api.rawg.io/api/games?dates=2020-06-10,2021-12-12&ordering=-added${key}`
     );
     return dispatch({
       type: FETCH_GAMES_SUCCESS,

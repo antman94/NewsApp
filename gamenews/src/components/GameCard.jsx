@@ -1,14 +1,15 @@
 import React,{useEffect} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Button, 
-  Card, 
+  Card,
+  List, 
   CardActionArea, 
   CardActions, 
   CardContent, 
-  CardMedia } from '@material-ui/core';
+  CardMedia, } from '@material-ui/core';
 import XboxICON from '@material-ui/icons/SportsEsports';
 import PSICON from '@material-ui/icons/Games';
-import PCICON from '@material-ui/icons/DesktopWindows';
+import CardGiftcardIcon from '@material-ui/icons/CardGiftcard';
 
 import { GeneralWhiteText } from './common/index.styled';
 
@@ -16,7 +17,6 @@ const useStyles = makeStyles(() => ({
   root: {
     margin: '15px',
     width: '345px',
-    height: '400px',
     borderRadius: '15px',
   },
   media: {
@@ -33,7 +33,7 @@ const useStyles = makeStyles(() => ({
     float: 'right'
   },
   WishlistButton: {
-    left: 135,
+    left: 105,
   },
 
 }))
@@ -51,14 +51,21 @@ function GameCard({game}) {
             title={game.name}
           />
           <CardContent className={classes.CardContainer}>
-            <GeneralWhiteText gutterBottom variant="h5" component="h2" className={classes.GameTitle}>
+            <GeneralWhiteText gutterBottom  className={classes.GameTitle}>
               {game.name}
             </GeneralWhiteText>
             <XboxICON className={classes.Icons} />
             <PSICON className={classes.Icons}/>
-            {/* <GeneralWhiteText variant="body2"  component="p">
-              {props.content}
-            </GeneralWhiteText> */}
+            <List>
+              <GeneralWhiteText variant="body2"  component="p">
+                Metacritic {game.metacritic}
+              </GeneralWhiteText>            
+              <GeneralWhiteText variant="body2"  component="p">
+                Release Date {game.released}
+              </GeneralWhiteText> 
+              <GeneralWhiteText variant="body2"  component="p">Genres </GeneralWhiteText>
+               {game.genres.map((genre) => (<GeneralWhiteText variant="body2"  component="p" key={genre.id} genre={genre.name}>{genre.name}</GeneralWhiteText>))}         
+            </List>
           </CardContent>
         </CardActionArea>
         <CardActions>
@@ -66,6 +73,7 @@ function GameCard({game}) {
             {'<<Read more'}
           </Button>
           <Button className={classes.WishlistButton} size="small" color="primary" >
+          <CardGiftcardIcon></CardGiftcardIcon>
             +Wishlist
           </Button>
         </CardActions>

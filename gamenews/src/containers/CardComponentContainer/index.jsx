@@ -3,9 +3,12 @@ import { connect } from "react-redux";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { makeStyles } from '@material-ui/core/styles';
 
-import { fetchGames } from "../../redux/actions/games";
+import { fetchGames,fetchGame } from "../../redux/actions/games";
 import { CardContainer } from '../../components/common/index.styled';
 import GameCard from '../../components/GameCard';
+import { fetchUsers } from '../../redux/actions/users';
+import { selectGames, selectGamesErr, selectGamesisLoading, selectSingelGame } from '../../redux/reducers/games';
+import { selectUserList } from '../../redux/reducers/users'
 
 const useStyles = makeStyles(() => ({
   centerdiv: {
@@ -22,27 +25,20 @@ function CardComponentContainer(props) {
 
   useEffect(() => {
     fetchGames();
+    fetchGame("51325");
+    fetchUsers();
   }, [])
 
- 
-  const { games, err, isLoading, fetchGames } = props;
-  console.log(games);
+  const { games, err, isLoading, fetchGames, fetchUsers, users, fetchGame, gameinfo } = props;
+  console.log(users);
+  console.log(gameinfo);
   return (
     <CardContainer>
-      {isLoading && 
-        <div className={classes.centerdiv}><CircularProgress /></div>
-      }
+      {isLoading && <div className={classes.centerdiv}><CircularProgress style={{'color': 'yellow'}}/></div>}
       {games && (
         <Fragment>
-          {games.results.length === 0 && (
-            <Paragraph>No games found</Paragraph>
-          )}
-          {games.results.map((game) => (
-            <GameCard
-              key={game.id}
-              game={game}
-            />
-          ))}
+          {games.results.length === 0 && (<Paragraph>No games found</Paragraph>)}
+          {games.results.map((game) => (<GameCard key={game.id} game={game}/>))}
         </Fragment>
       )}
       {err && <div className={classes.centerdiv}>An error occurred. Message: {err.message}</div>}
@@ -50,13 +46,19 @@ function CardComponentContainer(props) {
   )
 }
 
-const mapStateToProps = (state) => ({
-  games: state.games.data,
-  err: state.games.err,
-  isLoading: state.games.isLoading
-});
+const mapStateToProps = (state) => {
+  return {
+    games: selectGames(state),
+    err: selectGamesErr(state),
+    isLoading: selectGamesisLoading(state),
+    gameinfo: selectSingelGame(state,"51325"),
+    users: selectUserList(state)
+  }
+};
 const mapDispatchToProps = {
-  fetchGames
+  fetchGames,
+  fetchGame,
+  fetchUsers,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)( CardComponentContainer);
