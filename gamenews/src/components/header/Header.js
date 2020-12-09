@@ -16,10 +16,10 @@ const Header = () => {
                 <p>– I'VE GOT NEWS FOR YA! –</p>
             </div>
             <div className='items-right'>
-            <button className="signinmodalbutton" onClick={() => setModalIsOpen(true)}><h3>SIGN IN</h3></button>
+            <button className="signinmodalbutton" onClick={() => setModalIsOpen(true)}><h3>SIGN UP</h3></button>
                 <Modal className="signinmodal" isOpen={modalIsOpen}>
-                    <button className="closebutton" onClick={() => setModalIsOpen(false)}>Close</button><br />
-                    <h1 className="signintext">SIGN IN</h1>
+                    <button className="closebutton" onClick={() => setModalIsOpen(false)}><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><path fill="white" d="M23.954 21.03l-9.184-9.095 9.092-9.174-2.832-2.807-9.09 9.179-9.176-9.088-2.81 2.81 9.186 9.105-9.095 9.184 2.81 2.81 9.112-9.192 9.18 9.1z"/></svg></button><br />
+                    <h1 className="signintext">SIGN UP</h1>
                     <label for="nameinput">NAME</label><br />
                     <input type="text" className="nameinput"></input><br />
 
@@ -47,8 +47,7 @@ const Header = () => {
                     <label for="loginnameinput">PASSWORD</label><br />
                     <input type="text" className="nameinput"></input><br />
 
-                    <h3 className="bottomtext">Already have an account?</h3>
-                    <h3 className="linktologin">Click here</h3>
+                    <h3 className="bottomtext">Already have an account?<span className="linktologin">Click Here</span></h3>
                     <button className="loginbutton">Sign In</button>
 		        </Modal>
             </div>
