@@ -68,7 +68,7 @@ function GameCard({poster, title, content}) {
             +Wishlist
           </Button>
         </CardActions>
-    </Card>
+      </Card>
   );
 }
 
