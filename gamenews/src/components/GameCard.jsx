@@ -11,6 +11,7 @@ import { Button,
   import PCICON from '@material-ui/icons/DesktopWindows';
 
   import { GeneralWhiteText } from './common/index.styled';
+import LoginComponent from './LoginComponent';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -40,9 +41,10 @@ const useStyles = makeStyles(() => ({
 function GameCard({poster, title, content}) {
 
   const classes = useStyles();
-
+  
   return (
       <Card className={classes.root}>
+        <LoginComponent/>
         <CardActionArea>
           <CardMedia
             className={classes.media}
