@@ -1,0 +1,138 @@
+.signinmodalbutton {
+    color: greenyellow;
+    background-color: transparent;
+    border: transparent;
+    cursor: pointer;
+}
+
+.signinmodalbutton h3 {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.signinmodal {
+    width: 900px;
+    height: 700px;
+    background-color: #1b1b1b;
+    margin-top: 190px;
+    margin-left: 28%;
+    padding-top: 60px;
+    padding-left: 300px;
+    padding-right: 30px;
+}
+
+.signintext {
+    font-family: XXIX, serif;
+    font-size: 4rem;
+    color: white;
+    margin-left: 45px;
+}
+
+.closebutton {
+    position: absolute;
+    background-color: transparent;
+    border-radius: 5px;
+    border: transparent;
+    color: white;
+    cursor: pointer;
+    width: 70px;
+    height: 40px;
+    margin-left: 500px;
+}
+
+.signinbutton {
+    background-color: transparent;
+    border-radius: 5px;
+    border: 2px solid greenyellow;
+    color: white;
+    cursor: pointer;
+    width: 70px;
+    height: 40px;
+    margin-left: 110px;
+    margin-top: 14px;
+}
+
+.loginbutton {
+    background-color: transparent;
+    border-radius: 5px;
+    border: 2px solid greenyellow;
+    color: white;
+    cursor: pointer;
+    width: 70px;
+    height: 40px;
+    margin-left: 110px;
+    margin-top: 40px;
+}
+
+.nameinput {
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 20px;
+    width: 300px;
+    height: 40px;
+    margin-top: 8px;
+    margin-bottom: 30px;
+}
+
+.bottomtext {
+    color: white;
+    margin-left: 30px;
+}
+
+.linktologin {
+    color: greenyellow;
+    margin-left: 90px;
+}
+
+label {
+    color: white;
+    margin-left: 100px;
+    font-weight: bold;
+}
+
+.loginmodal {
+    width: 600px;
+    height: 580px;
+    background-color: #1b1b1b;
+    margin-top: 190px;
+    margin-left: 40%;
+    padding-top: 20px;
+    padding-left: 155px;
+    padding-right: 30px;
+    border-radius: 18px;
+    border: 5px solid greenyellow;
+}
+
+.loginclosebutton {
+    background-color: transparent;
+    border: transparent;
+    color: white;
+    cursor: pointer;
+    width: 70px;
+    height: 40px;
+    margin-left: 370px;
+}
+
+.logintext {
+    font-family: XXIX, serif;
+    font-size: 4rem;
+    color: white;
+    margin-left: 65px;
+}
+
+.loginmodalbutton {
+    background-color: transparent;
+    border: transparent;
+    cursor: pointer;
+    color: greenyellow;
+    margin-left: 20px;
+}
+
+/*.loginnameinput 
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 20px;
+    width: 300px;
+    height: 40px;
+    margin-top: 8px;
+    margin-bottom: 30px;
+}*/
