@@ -5,8 +5,12 @@ import {Route, BrowserRouter as Router, Switch} from "react-router-dom";
 import Wishlist from './components/header/Wishlist';
 import MyLibrary from './components/header/MyLibrary';
 import News from './components/header/News';
+import { AppContainer } from './components/common/index.styled';
+import CardComponentContainer from './containers/CardComponentContainer';
+import Leftmenu from './components/LeftMenuComponent/LeftMenu';
 
 function App() {
+
   return (
     <div className="App">
       <Header />
@@ -19,6 +23,10 @@ function App() {
         </Switch>  
       </Router>
       <Home />
+      <AppContainer>
+        <Leftmenu />
+        <CardComponentContainer />
+      </AppContainer>
     </div>
   );
 }

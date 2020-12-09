@@ -6,14 +6,21 @@ import './Header.css'
 
 
 const Header = () => {
+
     const [modalIsOpen, setModalIsOpen] = useState(false)
     const [loginmodalIsOpen, setLoginModalIsOpen] = useState(false)
+import DayJS from 'react-dayjs';
+
+const currentDate = '';
+
     return (
         <header>
-            <img src={iconLogo} alt='icon of a fox' style={{ height: '95px' }} />
-            <div className='column-container'>
-                <h1>Game Over News</h1>
-                <p>– I'VE GOT NEWS FOR YA! –</p>
+            <div className='items-center'>
+                <img src={iconLogo} alt='icon of a fox' className='logo' style={{ height: '100px' }} />
+                <div className='column-container'>
+                    <h1>Ga<span className='m'>m</span>e Ove<span className='r'>r</span> News</h1>
+                    <DayJS className='date' format='dddd D MMMM YYYY'>{ currentDate }</DayJS>
+                </div>
             </div>
             <div className='items-right'>
             <button className="signinmodalbutton" onClick={() => setModalIsOpen(true)}><h3>SIGN UP</h3></button>
@@ -50,10 +57,11 @@ const Header = () => {
                     <h3 className="bottomtext">Already have an account?<span className="linktologin">Click Here</span></h3>
                     <button className="loginbutton">Sign In</button>
 		        </Modal>
+                <button className='login-btn'>Login</button>
             </div>
 
         </header>
     )
 }
 
-export default Header;
+export default Header();

@@ -1,4 +1,5 @@
 body {
+
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -15,3 +16,7 @@ code {
 @font-face {
   font-family: 'XXIX';
   src: local('XXIX'), url(./assets/fonts/XXIX.otf) format('truetype');}
+
+#root {
+  height: 720px;
+}
