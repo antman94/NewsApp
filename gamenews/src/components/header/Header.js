@@ -65,4 +65,4 @@ const currentDate = '';
     )
 }
 
-export default Header();
+export default Header;

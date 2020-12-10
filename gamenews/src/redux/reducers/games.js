@@ -56,7 +56,13 @@ const games = (state = {collection: {}}, action) => {
         }
       };
     case FETCH_GAME_ERROR:
-      return { ...state, [action.id]: { err: action.err, isLoading: false } };
+      return { 
+        ...state, 
+        [action.id]: {
+           err: action.err, 
+           isLoading: false 
+        } 
+      };
     default:
       return state;
   }

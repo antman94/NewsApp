@@ -6,7 +6,7 @@ export const FETCH_GAME_REQUEST = "FETCH_GAME_REQUEST";
 export const FETCH_GAME_SUCCESS = "FETCH_GAME_SUCCESS";
 export const FETCH_GAME_ERROR = "FETCH_GAME_ERROR";
 
-export const fetchGame = id => async dispatch => {
+export const fetchGame = (id) => async dispatch => {
   await dispatch({ type: FETCH_GAME_REQUEST, id });
   try {
     const response = await axios.get(

@@ -23,14 +23,13 @@ export const POST_USER_REQUEST = "POST_USER_REQUEST";
 export const POST_USER_SUCCESS = "POST_USER_SUCCESS";
 export const POST_USER_ERROR = "POST_USER_ERROR";
 
-export const createUser = ({ body }) => async dispatch => {
+export const createUser = ( body ) => async dispatch => {
   await dispatch({ type: POST_USER_REQUEST });
   try {
-    const response = await axios.post(`${apiUrl}`,{body});
+    const response = await axios.post(`${apiUrl}`, body);
     return dispatch({
       type: POST_USER_SUCCESS,
       data: {
-        _id: response.data._id,
         username: response.data.username,
         password: response.data.password,
         gamesWishList: [response.data.gamesWishList]
@@ -45,18 +44,18 @@ export const PUT_USER_REQUEST = "PUT_USER_REQUEST";
 export const PUT_USER_SUCCESS = "PUT_USER_SUCCESS";
 export const PUT_USER_ERROR = "PUT_USER_ERROR";
 
-export const changeUser = ({id, body }) => async dispatch => {
+export const changeUser = (id, body ) => async dispatch => {
   await dispatch({ type: PUT_USER_REQUEST, id });
   try {
-    const response = await axios.put(`${apiUrl}/${id}`,{body});
+    const response = await axios.put(`${apiUrl}/${id}`, body);
     return dispatch({
       type: PUT_USER_SUCCESS,
       data: {
-        _id: response.data._id,
         username: response.data.username,
         password: response.data.password,
         gamesWishList: [response.data.gamesWishList]
-      }
+      },
+      id
     });
   }catch (err) {
     return dispatch({ type: PUT_USER_ERROR, err });
@@ -64,24 +63,3 @@ export const changeUser = ({id, body }) => async dispatch => {
 };
    
 
-// export const createUser = ({ body }) => (dispatch) => {
-//   return axios.post(`${apiUrl}`, { body})
-//     .then(response => {
-//       dispatch(createUserSuccess(response.data))
-//     })
-//     .catch(error => {
-//       throw(error);
-//     });
-// };
-
-// export const createUserSuccess =  (data) => {
-//   return {
-//     type: ADD_USER,
-//     payload: {
-//       _id: data._id,
-//       username: data.username,
-//       password: data.password,
-//       gamesWishList: data.gamesWishList
-//     }
-//   }
-// };

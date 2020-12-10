@@ -1,6 +1,6 @@
 import './App.scss';
 import Header from './components/header/Header';
-import Home from './components/header//Home';
+import Home from './components/header/Home';
 import {Route, BrowserRouter as Router, Switch} from "react-router-dom";
 import Wishlist from './components/header/Wishlist';
 import MyLibrary from './components/header/MyLibrary';
@@ -13,7 +13,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
+      {/* <Header />
       <Router>
         <Switch>
           <Route path="/" exact component={Home}/>
@@ -22,9 +22,10 @@ function App() {
           <Route path="/news" component={News}/>
         </Switch>  
       </Router>
-      <Home />
+      <Home /> */}
+      <Header />
+      <Leftmenu />
       <AppContainer>
-        <Leftmenu />
         <CardComponentContainer />
       </AppContainer>
     </div>
