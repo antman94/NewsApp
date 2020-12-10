@@ -31,7 +31,7 @@ function CardComponentContainer(props) {
 
   const { games, err, isLoading, fetchGames, fetchUsers, users, fetchGame, gameinfo } = props;
   console.log(users);
-  console.log(gameinfo);
+  console.log(games);
   return (
     <CardContainer>
       {isLoading && <div className={classes.centerdiv}><CircularProgress style={{'color': 'yellow'}}/></div>}

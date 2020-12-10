@@ -9,7 +9,6 @@ export const AppContainer = styled.div`
 `
 export const GeneralWhiteText = styled(Typography)`
   color: #FFFFFF;
-  font-size: 14px;
   font-family: 'Lato';
 `
 
