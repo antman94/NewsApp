@@ -1,8 +1,11 @@
 .signinmodalbutton {
+    position: absolute;
     color: greenyellow;
     background-color: transparent;
     border: transparent;
     cursor: pointer;
+    margin-left: -4px;
+    margin-top: 40px;
 }
 
 .signinmodalbutton h3 {
