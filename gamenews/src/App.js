@@ -16,16 +16,16 @@ function App() {
       <Header />
       <Router>
         <Switch>
-          <Route path="/" exact component={Home}/>
+          <Route path="/" exact component={CardComponentContainer}/>
           <Route path="/wishlist" component={Wishlist}/>
           <Route path="/mylibrary" component={MyLibrary}/>
           <Route path="/news" component={News}/>
+          {/*<Route path="card" component={CardComponentContainer}/>*/}
         </Switch>  
       </Router>
-      <Home />
+
       <AppContainer>
         <Leftmenu />
-        <CardComponentContainer />
       </AppContainer>
     </div>
   );
