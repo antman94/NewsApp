@@ -22,7 +22,7 @@ function Leftmenu() {
   const classes = LeftMenuStyle();
     
   return (
-      <LeftMenu>
+      <LeftMenu className={classes.menycontainer}>
       <GeneralWhiteText>Console</GeneralWhiteText>
         <MenuList>
           <MenuItem className={classes.root}>
