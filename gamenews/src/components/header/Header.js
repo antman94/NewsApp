@@ -4,6 +4,8 @@ import { useState } from 'react'
 import Modal from 'react-modal';
 import './Header.css'
 import DayJS from 'react-dayjs';
+import { connect, mapStateToProps } from 'react-redux';
+import {  } from 'redux';
 
 const Header = () => {
 
@@ -96,4 +98,15 @@ const Header = () => {
 	)
 }
 
-export default Header;
+function mapStateToProps(state) {
+
+	//Hämta användare med ID , kontrollera att lösenord stämmer för login
+
+	// Skicka användare med dispatch, create new user.
+	return {
+
+	}
+
+}
+
+export default connect(mapStateToProps, null)(Header);
