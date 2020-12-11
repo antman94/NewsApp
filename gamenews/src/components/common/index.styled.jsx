@@ -9,7 +9,7 @@ export const AppContainer = styled.div`
 `
 export const GeneralWhiteText = styled(Typography)`
   color: #FFFFFF;
-  font-family: 'Lato';
+  font-family: 'Open Sans';
 `
 
 export const CardContainer = styled.div`

@@ -6,12 +6,14 @@ import MyLibrary from './components/header/MyLibrary';
 import News from './components/header/News';
 import CardComponentContainer from './containers/CardComponentContainer';
 import Leftmenu from './components/LeftMenuComponent/LeftMenu';
+import TopNavbar from './components/TopNavbar';
 
 function App() {
 
   return (
     <div className="App">
       <Header />
+      <TopNavbar />
       <Leftmenu />
       <Router>
         <Switch>
