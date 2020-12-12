@@ -1,5 +1,5 @@
 import React from 'react';
-import iconLogo from './icon-fox.png';
+import iconLogo from '../../assets/logos/icon-fox.png';
 import { useState } from 'react'
 import Modal from 'react-modal';
 import './Header.css'

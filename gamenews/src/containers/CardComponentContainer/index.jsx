@@ -5,7 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import { fetchGames,fetchGame } from "../../redux/actions/games";
 import { CardContainer } from '../../components/common/index.styled';
-import GameCard from '../../components/GameCard';
+import GameCard from '../../components/gameCard/GameCard';
 import { fetchUsers } from '../../redux/actions/users';
 import { selectGames, selectGamesErr, selectGamesisLoading, selectSingelGame } from '../../redux/reducers/games';
 import { selectUserList } from '../../redux/reducers/users'
@@ -25,12 +25,12 @@ function CardComponentContainer(props) {
 
   useEffect(() => {
     fetchGames();
-    fetchGame("51325");
-    fetchUsers();
+    // fetchGame("51325");
+    // fetchUsers();
   }, [])
 
   const { games, err, isLoading, fetchGames, fetchUsers, users, fetchGame, gameinfo } = props;
-  console.log(users);
+  // console.log(users);
   console.log(games);
   return (
     <CardContainer>
@@ -51,14 +51,14 @@ const mapStateToProps = (state) => {
     games: selectGames(state),
     err: selectGamesErr(state),
     isLoading: selectGamesisLoading(state),
-    gameinfo: selectSingelGame(state,"51325"),
-    users: selectUserList(state)
+    // gameinfo: selectSingelGame(state,"51325"),
+    // users: selectUserList(state)
   }
 };
 const mapDispatchToProps = {
   fetchGames,
-  fetchGame,
-  fetchUsers,
+  // fetchGame,
+  // fetchUsers,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)( CardComponentContainer);
