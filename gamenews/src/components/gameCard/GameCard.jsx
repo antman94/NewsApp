@@ -1,7 +1,8 @@
-import React,{useEffect} from 'react';
+import React,{useEffect, useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import SportsEsportsIcon from '@material-ui/icons/SportsEsports';
-import { Button, 
+import {
+  Button, 
   Card,
   CardActionArea, 
   CardActions, 
@@ -63,22 +64,21 @@ const useStyles = makeStyles(() => ({
 function GameCard({game}) {
 
   const classes = useStyles();
-  let scoreColor = classes.scoreColor;
+  const [scoreColor, setscoreColor] = useState(classes.scoreColor);
   
   const dictionary={
     "pc": pc, "xbox": xbox, "playstation": playstation, "nintendo": nintendo,
     "linux": linux, "ios": ios, "mac":mac, "android": android
   }
 
-  useEffect(() => {
-    if (game.metacritic > 70) {
-    }else if (game.metacritic < 50){
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      scoreColor = classes.scoreColor3
+  useEffect(() => {   
+    if (game.metacritic > 75) {
+    }else if (game.metacritic < 60){
+      setscoreColor(classes.scoreColor3)
     }else{
-      scoreColor = classes.scoreColor2
+      setscoreColor(classes.scoreColor2)
     } 
-  }, [])
+  }, [classes.scoreColor2, classes.scoreColor3, game.metacritic])
 
   return (
     <Card className={classes.root}>
@@ -100,11 +100,11 @@ function GameCard({game}) {
               alt={platform.platform.name} />
               ))
             } 
-            <div style={{'position': 'absolute', 'left':'230px','display':'flex','alignItems':'baseline'}}>
+            {game.metacritic && <div style={{'position': 'absolute', 'left':'230px','display':'flex','alignItems':'baseline'}}>
               <GeneralWhiteText style={{'marginRight': '5px'}}>Metacritic</GeneralWhiteText> 
               <div style={{'width': '25px','lineHeight': '18px','borderRadius': '20%','textAlign': 'center','fontSize': '13px','fontWeight': 'bolder'}}
                className={scoreColor}>{game.metacritic}</div>
-            </div>
+            </div>}
           </div>           
           <GeneralWhiteText style={{'display':'flex', 'marginTop':'25px', 'borderBottom':'solid 1px #424242','paddingBottom':'5px'}} variant="body2"  component="p">
             Release Date <span style={{'position': 'absolute', 'left':'230px'}}>{game.released}</span>
