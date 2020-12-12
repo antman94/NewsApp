@@ -1,8 +1,8 @@
 import React,{useEffect} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import SportsEsportsIcon from '@material-ui/icons/SportsEsports';
 import { Button, 
   Card,
-  List, 
   CardActionArea, 
   CardActions, 
   CardContent, 
@@ -40,7 +40,7 @@ const useStyles = makeStyles(() => ({
     marginRight: '10px',
   },
   WishlistButton: {
-    left: 105,
+    left: 85,
   },
   IconDiv: {
     display: 'flex',
@@ -116,12 +116,13 @@ function GameCard({game}) {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary">
-          {'<<Read more'}
+        <Button style={{'marginLeft': '10px'}} size="small">
+          <SportsEsportsIcon style={{'marginRight': '5px'}}></SportsEsportsIcon>
+          More Info
         </Button>
-        <Button className={classes.WishlistButton} size="small" color="primary" >
-        <CardGiftcardIcon></CardGiftcardIcon>
-          +Wishlist
+        <Button className={classes.WishlistButton} size="small" >
+          <CardGiftcardIcon style={{'marginRight': '5px'}}></CardGiftcardIcon>
+          Wishlist
         </Button>
       </CardActions>
     </Card>
