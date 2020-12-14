@@ -1,6 +1,7 @@
 import React,{useEffect, useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import SportsEsportsIcon from '@material-ui/icons/SportsEsports';
+import { Link } from 'react-router-dom'
+import SportsEsportsOutlinedIcon from '@material-ui/icons/SportsEsportsOutlined';
 import {
   Button, 
   Card,
@@ -25,7 +26,7 @@ const useStyles = makeStyles(() => ({
     width: '345px',
     borderRadius: '15px',
     marginRight: '15px',
-    marginBottom: '15px',
+    marginBottom: '20px',
   },
   media: {
     height: 180
@@ -59,6 +60,26 @@ const useStyles = makeStyles(() => ({
     color: 'red',
     border: '2px solid red',
   },
+  genreDiv:{
+    display: 'flex',
+    paddingBottom: '5px',
+    flexDirection: 'row-reverse' ,
+    alignItems: 'center',
+    marginTop: '10px',
+    borderBottom: 'solid 1px #424242',
+  },
+  releaseContainer: {
+    display: 'flex', 
+    marginTop: '25px', 
+    borderBottom: 'solid 1px #424242',
+    paddingBottom: '5px'
+  },
+  genresHead: {
+    position: 'absolute',
+    left: '15px',
+    marginBottom: '5px',
+    fontSize: '14px'
+  }
 }))
 
 function GameCard({game}) {
@@ -106,18 +127,20 @@ function GameCard({game}) {
                className={scoreColor}>{game.metacritic}</div>
             </div>}
           </div>           
-          <GeneralWhiteText style={{'display':'flex', 'marginTop':'25px', 'borderBottom':'solid 1px #424242','paddingBottom':'5px'}} variant="body2"  component="p">
-            Release Date <span style={{'position': 'absolute', 'left':'230px'}}>{game.released}</span>
+          <GeneralWhiteText className={classes.releaseContainer} variant="body2"  component="p">
+            Release Date <span style={{'position': 'absolute', 'left':'255px'}}>{game.released}</span>
           </GeneralWhiteText> 
-          <GeneralWhiteText variant="body2"  component="p">Genres </GeneralWhiteText>
-          <div style={{'display':'flex','borderBottom':'solid 1px #424242','paddingBottom':'5px'}}> 
-            {game.genres.map((genre) => (<GeneralWhiteText style={{'marginRight':'4px','fontSize':'12px','color':'lightgrey'}} variant="body2"  component="p" key={genre.id} genre={genre.name}>{genre.name}</GeneralWhiteText>))}
-          </div>      
+    
+          <div className={classes.genreDiv}>
+            <GeneralWhiteText className={classes.genresHead}>Genres</GeneralWhiteText>
+            {game.genres.map((genre) => (<GeneralWhiteText style={{'marginRight':'4px','fontSize':'12px','color':'lightgrey'}} 
+            variant="body2"  component="p" key={genre.id} genre={genre.name}>{genre.name }</GeneralWhiteText>))}
+          </div>     
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button style={{'marginLeft': '10px'}} size="small">
-          <SportsEsportsIcon style={{'marginRight': '5px'}}></SportsEsportsIcon>
+        <Button style={{'marginLeft': '10px'}} size="small" component={Link} to={`/gameInfo/${game.id}`}>
+          <SportsEsportsOutlinedIcon style={{'marginRight': '5px'}}></SportsEsportsOutlinedIcon>
           More Info
         </Button>
         <Button className={classes.WishlistButton} size="small" >

@@ -8,7 +8,6 @@ import { CardContainer } from '../../components/common/index.styled';
 import GameCard from '../../components/gameCard/GameCard';
 import { selectGames, selectGamesErr, selectGamesisLoading} from '../../redux/reducers/games';
 
-
 const useStyles = makeStyles(() => ({
   centerdiv: {
     color: "white",
@@ -24,13 +23,12 @@ function CardComponentContainer(props) {
 
   useEffect(() => {
     fetchGames();
-    // fetchGame("51325");
     // fetchUsers();
   }, [])
 
-  const { games, err, isLoading, fetchGames,} = props;
-  // console.log(users);
+  const { games, err, isLoading, fetchGames} = props;
   console.log(games);
+
   return (
     <CardContainer>
       {isLoading && <div className={classes.centerdiv}><CircularProgress style={{'color': 'yellow'}}/></div>}
@@ -40,7 +38,7 @@ function CardComponentContainer(props) {
           {games.results.map((game) => (<GameCard key={game.id} game={game}/>))}
         </Fragment>
       )}
-      {err && <div className={classes.centerdiv}>An error occurred. Message: {err.message}</div>}
+      {err && <div className={classes.centerdiv}>An error occurred! Holey moley! This really sucks. Message: {err.message}</div>}
     </CardContainer>
   )
 }
@@ -50,13 +48,11 @@ const mapStateToProps = (state) => {
     games: selectGames(state),
     err: selectGamesErr(state),
     isLoading: selectGamesisLoading(state),
-    // gameinfo: selectSingelGame(state,"51325"),
     // users: selectUserList(state)
   }
 };
 const mapDispatchToProps = {
   fetchGames,
-  // fetchGame,
   // fetchUsers,
 };
 
