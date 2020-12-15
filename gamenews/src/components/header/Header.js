@@ -1,13 +1,18 @@
-import React from 'react';
-import iconLogo from './icon-fox.png';
-import { useState } from 'react'
+import React, { useState } from 'react';
 import Modal from 'react-modal';
-import './Header.css'
 import DayJS from 'react-dayjs';
-import { connect, mapStateToProps } from 'react-redux';
-import {  } from 'redux';
+import { connect } from 'react-redux';
+import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
 
-const Header = () => {
+import { selectUserList } from '../../redux/reducers/users'
+import { fetchUsers } from '../../redux/actions/users';
+import './Header.css'
+import iconLogo from './icon-fox.png';
+
+
+
+const Header = (props) => {
 
 	const [modalIsOpen, setModalIsOpen] = useState(false)
 	const [loginmodalIsOpen, setLoginModalIsOpen] = useState(false)
@@ -21,11 +26,20 @@ const Header = () => {
 	const currentDate = '';
 	const handleChangeLogin = (e) => {
 		console.log(e.target)
-		setLoginData({[e.target.name]: e.target.value})
+		setLoginData({...loginData,[e.target.name]: e.target.value})
+	}
+	const handleClickLogin = () => {
+		const user = props.users.users.find(user => user.username === loginData.username)
+		if(user.password === loginData.password) {
+			console.log('User logged in: ' , user)
+			setLoginModalIsOpen(false)
+		}
+		
 	}
 	const handleChangeSignup = (e) => {
 		setSignupData({[e.target.name]: e.target.value})
 	}
+	
 	return (
 		<header>
 			<div className='items-center'>
@@ -64,7 +78,7 @@ const Header = () => {
 
 					<h3 className="bottomtext">Already have an account?</h3>
 					<h3 className="linktologin">Click here</h3>
-					<button className="signinbutton">Sign In</button>
+					<button className="signinbutton">Sign up</button>
 				</Modal>
 
 				<Modal className="loginmodal" isOpen={loginmodalIsOpen}>
@@ -89,7 +103,10 @@ const Header = () => {
 						></input><br />
 
 					<h3 className="bottomtext">Already have an account?<span className="linktologin">Click Here</span></h3>
-					<button className="loginbutton">Sign In</button>
+					<button 
+						className="loginbutton"
+						onClick={handleClickLogin}
+						>Sign In</button>
 				</Modal>
 				<button className='login-btn' onClick={() => setLoginModalIsOpen(true)}>Login</button>
 			</div>
@@ -104,9 +121,13 @@ function mapStateToProps(state) {
 
 	// Skicka användare med dispatch, create new user.
 	return {
-
+		users: selectUserList(state)
 	}
 
 }
 
-export default connect(mapStateToProps, null)(Header);
+const mapDispatchToProps = {
+  fetchUsers,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
