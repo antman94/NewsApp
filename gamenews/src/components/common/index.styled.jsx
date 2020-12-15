@@ -15,6 +15,7 @@ export const GeneralWhiteText = styled(Typography)`
 export const CardContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
+  align-items: flex-start;
   width: 80%;
   padding: 15px;
   float: right;
