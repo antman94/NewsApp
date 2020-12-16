@@ -2,16 +2,22 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { makeStyles } from '@material-ui/core/styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import ReactPlayer from 'react-player'
 
 import { fetchGame } from "../../redux/actions/games";
 import { selectSingelGame, selectSingelGameErr, selectSingelGameisLoading} from '../../redux/reducers/games';
-import { 
-    AppContainer,
-    GeneralWhiteText
-   } from '../../components/common/index.styled';
+import {  GeneralWhiteText } from '../../components/common/index.styled';
 import Button from '@material-ui/core/Button';
 import CardGiftcardIcon from '@material-ui/icons/CardGiftcard';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import pc from '../../assets/logos/platforms/windows.png';
+import xbox from '../../assets/logos/platforms/xbox-logo.png';
+import playstation from '../../assets/logos/platforms/playstation-logotype.png';
+import nintendo from '../../assets/logos/platforms/nintendo-switch.png';
+import linux from '../../assets/logos/platforms/linux-1.png';
+import mac from '../../assets/logos/platforms/mac-os-logo.png';
+import android from '../../assets/logos/platforms/android.png';
+import ios from '../../assets/logos/platforms/app-store.png'
 
 const useStyles = makeStyles(() => ({
   centerdiv: {
@@ -21,22 +27,12 @@ const useStyles = makeStyles(() => ({
     width: '50%',
     textAlign: 'center'
   },
-   root: {
-    marginTop: '5%',
-    flaot: 'right',
-    width: '80%',
-    padding: '15px',
-  },
   content: {
     display: 'flex',
-    flexDirection: 'row',
-    flexWrap: 'noWrap',
   },
   ButttonUnderTitle: {
-    marginTop: '5%',
   },
   buttons: {
-    martinTop: '10%',
     backgroundColor: 'yellow',
   },
   aboutText: {
@@ -46,16 +42,33 @@ const useStyles = makeStyles(() => ({
   },
 
   contentLeft: {
-    marginLeft: '10%',
-    width: '70%',
+    width: '60%',
+    marginLeft: '20px',
+    marginTop: '20px'
+  },
+  contentInfoTwo: {
+    width: '40%',
   },
   buy: {
     marginTop: '10%',
-    marginLeft: '20%',
   },
   buyButtons: {
-    marginTop: '10%',
-    width: '300%',
+    display: 'flex',
+    flexWrap: 'wrap',
+    marginTop: '30px'
+  },
+  datePlatBox: {
+    display: 'flex',
+  },
+  Icons: {
+    height: '20px',
+    marginRight: '10px',
+  },
+  IconDiv: {
+    display: 'flex',
+    alignItems: 'center',
+    marginLeft: '20px'
+
   },
 
 }))
@@ -63,6 +76,10 @@ const useStyles = makeStyles(() => ({
 export const GameInfoContainer = (props) => {
   const classes = useStyles();
   const gameId = props.match.params.gameId;
+  const dictionary={
+    "pc": pc, "xbox": xbox, "playstation": playstation, "nintendo": nintendo,
+    "linux": linux, "ios": ios, "mac":mac, "android": android
+  }
   
   useEffect(() => {
     fetchGame(gameId);
@@ -75,20 +92,27 @@ export const GameInfoContainer = (props) => {
   const { gameinfo, fetchGame, err, isLoading } = props;
   console.log(gameinfo);
   return (
-
-      <div  className={classes.root}>
-        {isLoading && <div className={classes.centerdiv}><CircularProgress style={{'color': 'yellow'}}/></div>}
-        {err && <div className={classes.centerdiv}>👋 Hello kioskmongo!💩 An error occurred! Holey moley! This really sucks 🥺 Message: {err.message}</div>} 
-        {gameinfo && (
+    <div>
+      {isLoading && <div className={classes.centerdiv}><CircularProgress style={{'color': 'yellow'}}/></div>}
+      {err && <div className={classes.centerdiv}>👋 Hello kioskmongo!💩 An error occurred! Holey moley! This really sucks 🥺 Message: {err.message}</div>} 
+      {gameinfo && (
         <div className={classes.content}>
 
           {/* första diven */}
           <div className={classes.contentLeft}>
-            <div>
-              <GeneralWhiteText variant="p"> DATE</GeneralWhiteText>
-              <GeneralWhiteText variant="p"> PLATFORMS</GeneralWhiteText>
+            <div className={classes.datePlatBox}>
+              <GeneralWhiteText>{gameinfo.released}</GeneralWhiteText>
+              <div className={classes.IconDiv}  >
+                {gameinfo.parent_platforms.map((platform) => (
+                  <img className={classes.Icons} 
+                  key={platform.platform.id} 
+                  src={dictionary[platform.platform.slug]} 
+                  alt={platform.platform.name} />
+                  ))
+                } 
+              </div>
             </div>
-              <GeneralWhiteText variant="h3"><strong>Cyberpunk 2077</strong></GeneralWhiteText>
+              <GeneralWhiteText variant="h3"><strong>{gameinfo.name}</strong></GeneralWhiteText>
             <div className={classes.ButttonUnderTitle}>
               <Button
                 variant="contained"
@@ -101,7 +125,7 @@ export const GameInfoContainer = (props) => {
             </div>
             <div className={classes.aboutText}>
               <GeneralWhiteText  variant="h6"><strong>About</strong></GeneralWhiteText>
-              <GeneralWhiteText variant="p">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</GeneralWhiteText>
+              <GeneralWhiteText variant='body1'>{gameinfo.description_raw}</GeneralWhiteText>
             </div>
             <div>
               <GeneralWhiteText  variant="h6"><strong>Publisher</strong></GeneralWhiteText>
@@ -110,33 +134,34 @@ export const GameInfoContainer = (props) => {
 
           {/* andra diven */}
           <div className={classes.contentInfoTwo}>
-
-              <div className={classes.buy}>
-                <GeneralWhiteText variant="p"><strong>Where to buy</strong></GeneralWhiteText>
-                <div className={classes.buyButtons}>
-                  <Button
-                    variant="contained"
-                    size="small"
-                    color="default"
-                    className={classes.buttons}
-                    startIcon={< ShoppingCartIcon/>}
-                    > Playstation
-                  </Button>
-                  <Button style={{marginLeft: '2%'}}
-                    size="small"
-                    variant="contained"
-                    color="default"
-                    className={classes.buttons}
-                    startIcon={< ShoppingCartIcon/>}
-                    > Steam
-                  </Button>
-                </div>
+            <div className={classes.buy}>
+              <GeneralWhiteText ><strong>Where to buy</strong></GeneralWhiteText>
+              <div className={classes.buyButtons}>
+                <Button
+                  variant="contained"
+                  size="small"
+                  color="default"
+                  className={classes.buttons}
+                  startIcon={< ShoppingCartIcon/>}
+                  > Playstation
+                </Button>
+                <Button style={{marginLeft: '2%'}}
+                  size="small"
+                  variant="contained"
+                  color="default"
+                  className={classes.buttons}
+                  startIcon={< ShoppingCartIcon/>}
+                  > Steam
+                </Button>
               </div>
+            </div>
+            <div>
+              {gameinfo.clip && <ReactPlayer url={gameinfo.clip.clip} loop={true} controls={true} playing={true} volume={0} width='400px' height='300px' />}
+            </div>
           </div>          
         </div>
       )}
-      </div>
-
+    </div>
   )
 }
 
