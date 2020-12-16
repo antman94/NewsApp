@@ -4,7 +4,7 @@ import {
 } from '@material-ui/core';
 
 export const AppContainer = styled.div`
-  width: 100%;
+  width: 80%;
   min-height: 100%;
 `
 export const GeneralWhiteText = styled(Typography)`

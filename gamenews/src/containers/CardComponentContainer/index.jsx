@@ -38,7 +38,7 @@ function CardComponentContainer(props) {
           {games.results.map((game) => (<GameCard key={game.id} game={game}/>))}
         </Fragment>
       )}
-      {err && <div className={classes.centerdiv}>An error occurred! Holey moley! This really sucks. Message: {err.message}</div>}
+      {err && <div className={classes.centerdiv}>👋 Hello kioskmongo!💩 An error occurred! Holey moley! This really sucks 🥺 Message: {err.message}</div>}
     </CardContainer>
   )
 }
