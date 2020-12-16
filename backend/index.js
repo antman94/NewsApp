@@ -2,14 +2,15 @@ const express = require("express");
 const cors = require("cors")
 const bodyParser = require("body-parser");
 
-const routes = require("./routes")
+
 const db = require("./models")
 const Role = db.models.role;
-require('./app/routes/auth.routes')(app);
-require('./app/routes/user.routes')(app);
+
 
 const app = express();
-app.use(cors());
+
+
+app.use(cors("http://localhost:4000"));
 
 // environment variable PORT or 3000 if unset
 const port = process.env.PORT || 4000;
@@ -31,16 +32,15 @@ app.use((req, res, next) => {
   next()
 })
 
-app.use('/', routes)
+require('./routes/auth.routes.js')(app);
+require('./routes/user.routes.js')(app);
+
 
 // Start up the database, then the server and begin listen to requests
 if(process.env.NODE_ENV != "test") {
   db.connectDb().then(() => {
     const listener = app.listen(port, () => {
       console.info(`Server is listening on port ${listener.address().port}.`);
-    })
-    .then(() => {
-      console.log("Successfully connect to MongoDB.");
       initial();
     })
   }).catch((error) => {
