@@ -4,8 +4,11 @@ import { useState } from 'react'
 import Modal from 'react-modal';
 import './Header.css'
 import DayJS from 'react-dayjs';
+import Form from './Form';
 
 const Header = () => {
+
+    
 
     const [loginmodalIsOpen, setLoginModalIsOpen] = useState(false)
 
@@ -25,16 +28,8 @@ const Header = () => {
             <button className='login-btn' onClick={() => setLoginModalIsOpen(true)}>Login</button>
 
 		        <Modal className="loginmodal" isOpen={loginmodalIsOpen}>
-			        <button className="loginclosebutton" onClick={() => setLoginModalIsOpen(false)}><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><path fill="white" d="M23.954 21.03l-9.184-9.095 9.092-9.174-2.832-2.807-9.09 9.179-9.176-9.088-2.81 2.81 9.186 9.105-9.095 9.184 2.81 2.81 9.112-9.192 9.18 9.1z"/></svg></button>
-                    <h1 className="logintext">LOGIN</h1>
-                    <label for="loginnameinput">USERNAME</label><br />
-                    <input type="text" className="nameinput"></input><br />
-
-                    <label for="loginnameinput">PASSWORD</label><br />
-                    <input type="text" className="nameinput"></input><br />
-
-                    <h3 className="bottomtext">Don't have an account?<span className="linktologin">Click Here</span></h3>
-                    <button className="loginbutton">Sign In</button>
+			            <button className="loginclosebutton" onClick={() => setLoginModalIsOpen(false)}><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><path fill="white" d="M23.954 21.03l-9.184-9.095 9.092-9.174-2.832-2.807-9.09 9.179-9.176-9.088-2.81 2.81 9.186 9.105-9.095 9.184 2.81 2.81 9.112-9.192 9.18 9.1z"/></svg></button>
+                        <Form></Form>
 		        </Modal>
                 </div>
 

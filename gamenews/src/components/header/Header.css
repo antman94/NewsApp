@@ -76,6 +76,14 @@
     margin-bottom: 30px;
 }
 
+/*.nameinput:active {
+    color: white;
+}*/
+
+.nameinput:hover {
+    background-color: white;
+}
+
 .bottomtext {
     color: white;
     margin-left: 30px;
