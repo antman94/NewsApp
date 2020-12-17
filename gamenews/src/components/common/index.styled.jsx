@@ -9,7 +9,6 @@ export const AppContainer = styled.div`
 `
 export const GeneralWhiteText = styled(Typography)`
   color: #FFFFFF;
-  font-family: 'Lato';
 `
 
 export const CardContainer = styled.div`
@@ -23,7 +22,6 @@ export const CardContainer = styled.div`
 
 export const LeftMenu = styled.div`
 width: 20%;
-min-height: 100vh;
 padding-top: 20px;
 padding-left: 35px;
 background: #111111;

@@ -6,7 +6,7 @@ import ReactPlayer from 'react-player'
 
 import { fetchGame } from "../../redux/actions/games";
 import { selectSingelGame, selectSingelGameErr, selectSingelGameisLoading} from '../../redux/reducers/games';
-import {  GeneralWhiteText } from '../../components/common/index.styled';
+import { GeneralWhiteText } from '../../components/common/index.styled';
 import Button from '@material-ui/core/Button';
 import CardGiftcardIcon from '@material-ui/icons/CardGiftcard';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
@@ -24,11 +24,19 @@ const useStyles = makeStyles(() => ({
     color: "white",
     marginTop: '10%',
     margin: 'auto',
-    width: '50%',
-    textAlign: 'center'
+    width: '40%',
+    textAlign: 'center',
   },
   content: {
     display: 'flex',
+  },
+  backgroundImage: {
+    backgroundPosition: 'center', 
+    backgroundSize: 'cover', 
+    width: '80%',
+    float: 'right',
+    minHeight: '100vh',
+    borderRadius: '5px'
   },
   ButttonUnderTitle: {
   },
@@ -75,6 +83,7 @@ const useStyles = makeStyles(() => ({
 
 export const GameInfoContainer = (props) => {
   const classes = useStyles();
+  const { gameinfo, fetchGame, err, isLoading } = props;
   const gameId = props.match.params.gameId;
   const dictionary={
     "pc": pc, "xbox": xbox, "playstation": playstation, "nintendo": nintendo,
@@ -83,19 +92,15 @@ export const GameInfoContainer = (props) => {
   
   useEffect(() => {
     fetchGame(gameId);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [fetchGame, gameId])
 
-  }, [])
-
-
-
-  const { gameinfo, fetchGame, err, isLoading } = props;
   console.log(gameinfo);
   return (
     <div>
       {isLoading && <div className={classes.centerdiv}><CircularProgress style={{'color': 'yellow'}}/></div>}
       {err && <div className={classes.centerdiv}>👋 Hello kioskmongo!💩 An error occurred! Holey moley! This really sucks 🥺 Message: {err.message}</div>} 
       {gameinfo && (
+        <div className={classes.backgroundImage} style={{'backgroundImage':  `linear-gradient( rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9) ) ,url(${gameinfo.background_image})`}}>
         <div className={classes.content}>
 
           {/* första diven */}
@@ -159,6 +164,7 @@ export const GameInfoContainer = (props) => {
               {gameinfo.clip && <ReactPlayer url={gameinfo.clip.clip} loop={true} controls={true} playing={true} volume={0} width='400px' height='300px' />}
             </div>
           </div>          
+        </div>
         </div>
       )}
     </div>

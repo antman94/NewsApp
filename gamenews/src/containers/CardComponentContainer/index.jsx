@@ -14,20 +14,18 @@ const useStyles = makeStyles(() => ({
     marginTop: '10%',
     margin: 'auto',
     width: '50%',
+    marginRight: '40%',
     textAlign: 'center'
   }
 }))
 
 function CardComponentContainer(props) {
   const classes = useStyles();
+  const { games, err, isLoading, fetchGames} = props;
 
   useEffect(() => {
     fetchGames();
-    // fetchUsers();
-  }, [])
-
-  const { games, err, isLoading, fetchGames} = props;
-  console.log(games);
+  }, [fetchGames])
 
   return (
     <CardContainer>
@@ -48,12 +46,10 @@ const mapStateToProps = (state) => {
     games: selectGames(state),
     err: selectGamesErr(state),
     isLoading: selectGamesisLoading(state),
-    // users: selectUserList(state)
   }
 };
 const mapDispatchToProps = {
   fetchGames,
-  // fetchUsers,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)( CardComponentContainer);
