@@ -3,12 +3,10 @@ import { connect } from "react-redux";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { makeStyles } from '@material-ui/core/styles';
 
-import { fetchGames,fetchGame } from "../../redux/actions/games";
+import { fetchGames } from "../../redux/actions/games";
 import { CardContainer } from '../../components/common/index.styled';
 import GameCard from '../../components/GameCard';
-import { fetchUsers } from '../../redux/actions/users';
-import { selectGames, selectGamesErr, selectGamesisLoading, selectSingelGame } from '../../redux/reducers/games';
-import { selectUserList } from '../../redux/reducers/users'
+import { selectGames, selectGamesErr, selectGamesisLoading } from '../../redux/reducers/games';
 
 const useStyles = makeStyles(() => ({
   centerdiv: {
@@ -23,14 +21,14 @@ const useStyles = makeStyles(() => ({
 function CardComponentContainer(props) {
   const classes = useStyles();
 
+  const { games, err, isLoading, fetchGames } = props;
+
   useEffect(() => {
     fetchGames();
-    fetchGame("51325");
-    fetchUsers();
-  }, [])
+  }, [fetchGames])
+  
 
-  const { games, err, isLoading, fetchGames, fetchUsers, users, fetchGame, gameinfo } = props;
-  console.log(users);
+  
   console.log(games);
   return (
     <CardContainer>
@@ -51,14 +49,10 @@ const mapStateToProps = (state) => {
     games: selectGames(state),
     err: selectGamesErr(state),
     isLoading: selectGamesisLoading(state),
-    gameinfo: selectSingelGame(state,"51325"),
-    users: selectUserList(state)
   }
 };
 const mapDispatchToProps = {
   fetchGames,
-  fetchGame,
-  fetchUsers,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)( CardComponentContainer);

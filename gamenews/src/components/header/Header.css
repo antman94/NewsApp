@@ -85,6 +85,7 @@
 .linktologin {
     color: greenyellow;
     margin-left: 90px;
+    cursor: pointer;
 }
 
 label {

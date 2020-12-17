@@ -10,7 +10,7 @@ const Role = db.models.role;
 const app = express();
 
 
-app.use(cors("http://localhost:4000"));
+app.use(cors("http://localhost:4000/"));
 
 // environment variable PORT or 3000 if unset
 const port = process.env.PORT || 4000;
