@@ -21,7 +21,7 @@ export const CardContainer = styled.div`
 `
 
 export const LeftMenu = styled.div`
-width: 20%;
+width: 15%;
 padding-top: 20px;
 padding-left: 35px;
 background: #111111;

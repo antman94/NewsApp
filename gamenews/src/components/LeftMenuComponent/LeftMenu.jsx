@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 
 import { 
   LeftMenu,
@@ -23,17 +24,11 @@ function Leftmenu() {
     
   return (
       <LeftMenu className={classes.menycontainer}>
-      <GeneralWhiteText>Console</GeneralWhiteText>
+        <GeneralWhiteText variant="h6">Menu</GeneralWhiteText>
         <MenuList>
-          <MenuItem className={classes.root}>
-            <GeneralWhiteText className={classes.root} variant="inherit">Playstation 4</GeneralWhiteText>
+          <MenuItem className={classes.root} component={Link} to={`/`}>
+            <GeneralWhiteText className={classes.root} variant="inherit">Home</GeneralWhiteText>
           </MenuItem>
-          <MenuItem className={classes.root}>
-            <GeneralWhiteText className={classes.root} variant="inherit">Playstation 5</GeneralWhiteText>
-          </MenuItem>
-        </MenuList>
-        <GeneralWhiteText>Menu name</GeneralWhiteText>
-        <MenuList>
           <MenuItem className={classes.root}>
             <GeneralWhiteText className={classes.root} variant="inherit">Top 30 Games</GeneralWhiteText>
           </MenuItem>

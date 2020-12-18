@@ -103,7 +103,7 @@ function GameCard({game}) {
 
   return (
     <Card className={classes.root}>
-      <CardActionArea>
+      <CardActionArea  component={Link} to={`/gameInfo/${game.id}`}>
         <CardMedia
           className={classes.media}
           image={game.background_image}
