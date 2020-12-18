@@ -87,6 +87,7 @@ const Header = (props) => {
 	*		modal to signup modal and clears the form fields.
 	 */
 	const handleClickNoAccount = () => {
+		dispatch(clearMessage())
 		setSignupData('');
 		setLoginData('');
 		setLoginModalIsOpen(false);
