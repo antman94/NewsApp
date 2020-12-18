@@ -5,8 +5,8 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import { fetchGames } from "../../redux/actions/games";
 import { CardContainer } from '../../components/common/index.styled';
-import GameCard from '../../components/gameCard/GameCard';
-import { selectGames, selectGamesErr, selectGamesisLoading} from '../../redux/reducers/games';
+import GameCard from '../../components/GameCard';
+import { selectGames, selectGamesErr, selectGamesisLoading } from '../../redux/reducers/games';
 
 const useStyles = makeStyles(() => ({
   centerdiv: {
