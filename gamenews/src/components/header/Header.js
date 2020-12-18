@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import './Header.css'
 import iconLogo from './icon-fox.png';
 import { login, register, logout } from "../../redux/actions/users/auth";
+import { clearMessage } from '../../redux/actions/users/message';
 import { GeneralWhiteText } from '../common/index.styled.jsx';
 
 
@@ -24,16 +25,22 @@ const Header = (props) => {
 	});
 
 	const loggedInUser = JSON.parse(localStorage.getItem("user"));
-	const currentDate = '';
 	const { dispatch, message } = props;
+	const currentDate = '';
 
-
+/* 
+*		Function for opening the login modal, it also clears out any error messages that 
+*		might have been left there.
+ */
+	const openLoginModal = () => {
+		dispatch(clearMessage())
+		setLoginModalIsOpen(true)
+	}
 	
 	const handleChangeLogin = (e) => {
 		console.log(e.target)
 		setLoginData({...loginData,[e.target.name]: e.target.value})
 	}
-
 	/* 
 	*	Dispatches the login function in redux with username and password, and if everything
 	*	goes well it resets the form fields and closes the login modal so the user gets back
@@ -77,11 +84,23 @@ const Header = (props) => {
 
 	/* 
 	*		Function for handling when user clicks "Dont have an account". Switches from login
-	*		modal to signup modal.
+	*		modal to signup modal and clears the form fields.
 	 */
 	const handleClickNoAccount = () => {
+		setSignupData('');
+		setLoginData('');
 		setLoginModalIsOpen(false);
 		setModalIsOpen(true);
+	}
+	/* 
+	*		Same as above, but for switching from signup modal to login modal. Also clears form 
+	*		fields.
+	 */
+	const handleClickGoToLogin = () => {
+		setSignupData('');
+		setLoginData('');
+		setModalIsOpen(false);
+		setLoginModalIsOpen(true);
 	}
 
 	const logOut = () => {
@@ -93,7 +112,6 @@ const Header = (props) => {
 	 */
 	useEffect(() => {
 		Modal.setAppElement('body');
-		console.log(props.isLoggedIn)
 	},[])
 	
 	return (
@@ -137,15 +155,19 @@ const Header = (props) => {
 						value={signupData.confirmPassword}
 						onChange={(e) => handleChangeSignup(e)}
 					></input><br />
-					<GeneralWhiteText>{message}</GeneralWhiteText>
-				
-
+					
 					<h3 className="bottomtext">Already have an account?</h3>
-					<h3 className="linktologin">Click here</h3>
+					<h3 
+						className="linktologin"
+						onClick={handleClickGoToLogin}
+						>Click here</h3>
 					<button 
 						className="signinbutton"
 						onClick={handleClickSignup}
 						>Sign up</button>
+						<div className='error-message-container'>
+							<GeneralWhiteText className='error-message'>{message}</GeneralWhiteText>
+						</div>
 				</Modal>
 
 				<Modal className="loginmodal" isOpen={loginmodalIsOpen}>
@@ -168,18 +190,21 @@ const Header = (props) => {
 						value={loginData.password}
 						onChange={(e) => handleChangeLogin(e)}
 						></input><br />
-						<GeneralWhiteText>{message}</GeneralWhiteText>
 						
-
-					<h3 className="bottomtext">Dont have an account?
-					<span 
-						className="linktologin"
-						onClick={handleClickNoAccount}
-						>Click Here</span></h3>
+						<h3 className="bottomtext">Dont have an account?</h3>
+						<h3 
+							className="linktologin"
+							onClick={handleClickNoAccount}
+							>Click here</h3>
+							
 					<button 
 						className="loginbutton"
 						onClick={handleClickLogin}
 						>Sign In</button>
+						<div className='error-message-container'>
+							<GeneralWhiteText className='error-message'>{message}</GeneralWhiteText>
+						</div>
+						
 				</Modal>
 				{props.isLoggedIn ? 
 				<span>
@@ -189,7 +214,7 @@ const Header = (props) => {
 						>LOG OUT</GeneralWhiteText>
 					<h3 className='login-btn'>{loggedInUser.username}</h3>
 				</span>	:
-				<button className='login-btn' onClick={() => setLoginModalIsOpen(true)}>Login</button>
+				<button className='login-btn' onClick={openLoginModal}>Login</button>
 			}
 				
 			</div>
