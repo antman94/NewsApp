@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import CardComponentContainer from './containers/CardComponentContainer';
 import GameInfoContainer from './containers/GameInfoContainer/GameInfoContainer';
 import Leftmenu from './components/LeftMenuComponent/LeftMenu';
-import TopNavbar from './components/TopNavbar';
+import TopNavbar from './components/Navbar/TopNavbar';
 
 function App() {
 
