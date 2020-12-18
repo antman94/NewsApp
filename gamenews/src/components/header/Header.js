@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 
 import './Header.css'
 import iconLogo from '../../assets/logos/icon-fox.png';
-import myImg from '../../assets/images/HLimg.png'
 import { login, register, logout } from "../../redux/actions/users/auth";
 import { clearMessage } from '../../redux/actions/users/message';
 import { GeneralWhiteText } from '../common/index.styled.jsx';
@@ -126,7 +125,6 @@ const Header = (props) => {
 					<h1>Ga<span className='m'>m</span>e Ove<span className='r'>r</span> News</h1>
 					<DayJS className='date' format='dddd D MMMM YYYY'>{ currentDate }</DayJS>
 				</div>
-				<img src={myImg}/>
 			</div>
 			<div className='items-right'>
 			

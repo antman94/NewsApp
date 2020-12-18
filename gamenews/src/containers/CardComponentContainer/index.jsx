@@ -14,18 +14,17 @@ const useStyles = makeStyles(() => ({
     marginTop: '10%',
     margin: 'auto',
     width: '50%',
+    marginRight: '40%',
     textAlign: 'center'
   }
 }))
 
 function CardComponentContainer(props) {
   const classes = useStyles();
-
-  const { games, err, isLoading, fetchGames } = props;
+  const { games, err, isLoading, fetchGames} = props;
 
   useEffect(() => {
     fetchGames();
-    // fetchUsers();
   }, [fetchGames])
 
   return (

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import SearchBar from './SearchBar'; 
-// import FilterButton from './FilterButton';
 import { makeStyles } from '@material-ui/core/styles';
 
 

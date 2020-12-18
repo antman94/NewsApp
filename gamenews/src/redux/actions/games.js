@@ -10,8 +10,7 @@ export const fetchGame = (id) => async dispatch => {
   await dispatch({ type: FETCH_GAME_REQUEST, id });
   try {
     const response = await axios.get(
-      `https://api.rawg.io/api/games/${id}${key}`
-    );
+      `https://api.rawg.io/api/games/${id}?page_size=40${key}`    );
     return dispatch({
       type: FETCH_GAME_SUCCESS,
       data: response.data,

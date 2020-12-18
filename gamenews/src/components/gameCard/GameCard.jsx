@@ -103,7 +103,7 @@ function GameCard({game}) {
 
   return (
     <Card className={classes.root}>
-      <CardActionArea>
+      <CardActionArea  component={Link} to={`/gameInfo/${game.id}`}>
         <CardMedia
           className={classes.media}
           image={game.background_image}
@@ -133,8 +133,8 @@ function GameCard({game}) {
     
           <div className={classes.genreDiv}>
             <GeneralWhiteText className={classes.genresHead}>Genres</GeneralWhiteText>
-            {game.genres.map((genre) => (<GeneralWhiteText style={{'marginRight':'4px','fontSize':'12px','color':'lightgrey'}} 
-            variant="body2"  component="p" key={genre.id} genre={genre.name}>{genre.name }</GeneralWhiteText>))}
+            {game.genres.map((genre) => (<GeneralWhiteText style={{'marginRight':'4px','fontSize':'11px','color':'lightgrey'}} 
+            variant="body2"  key={genre.id} genre={genre.name}>{genre.name }</GeneralWhiteText>))}
           </div>     
         </CardContent>
       </CardActionArea>
