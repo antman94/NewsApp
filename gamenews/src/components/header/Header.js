@@ -4,7 +4,7 @@ import DayJS from 'react-dayjs';
 import { connect } from 'react-redux';
 
 import './Header.css'
-import iconLogo from './icon-fox.png';
+import iconLogo from '../../assets/logos/icon-fox.png';
 import myImg from '../../assets/images/HLimg.png'
 import { login, register, logout } from "../../redux/actions/users/auth";
 import { clearMessage } from '../../redux/actions/users/message';
