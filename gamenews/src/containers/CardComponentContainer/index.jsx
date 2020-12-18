@@ -25,11 +25,12 @@ function CardComponentContainer(props) {
 
   useEffect(() => {
     fetchGames();
+    // fetchUsers();
   }, [fetchGames])
   
-
-  
+  const { games, err, isLoading, fetchGames} = props;
   console.log(games);
+
   return (
     <CardContainer>
       {isLoading && <div className={classes.centerdiv}><CircularProgress style={{'color': 'yellow'}}/></div>}
@@ -39,7 +40,7 @@ function CardComponentContainer(props) {
           {games.results.map((game) => (<GameCard key={game.id} game={game}/>))}
         </Fragment>
       )}
-      {err && <div className={classes.centerdiv}>An error occurred. Message: {err.message}</div>}
+      {err && <div className={classes.centerdiv}>👋 Hello kioskmongo!💩 An error occurred! Holey moley! This really sucks 🥺 Message: {err.message}</div>}
     </CardContainer>
   )
 }
