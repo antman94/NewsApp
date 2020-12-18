@@ -1,4 +1,6 @@
 import {
+  FETCH_NEWGAMES_SUCCESS,
+  FETCH_TOPGAMES_SUCCESS,
   FETCH_GAMES_REQUEST,
   FETCH_GAMES_SUCCESS,
   FETCH_GAMES_ERROR,
@@ -10,6 +12,10 @@ import {
 export const selectGames = (state) => state.games.collection.data;
 export const selectGamesisLoading = (state) => state.games.collection.isLoading;
 export const selectGamesErr = (state) => state.games.collection.err;
+
+export const selectTopGames = (state) => state.games.collection.data;
+
+export const selectNewGames = (state) => state.games.collection.data;
 
 export const selectSingelGame = (state, id) => state.games[id] && state.games[id].data;
 export const selectSingelGameisLoading = (state, id) => state.games[id] && state.games[id].isLoading;
@@ -39,6 +45,22 @@ const games = (state = {collection: {}}, action) => {
         collection:{
           err: action.err, 
           isLoading: false 
+        }
+      };
+    case FETCH_TOPGAMES_SUCCESS:
+      return {
+        ...state,
+        collection: {
+          data: action.data,
+          isLoading: false
+        }
+      };
+    case FETCH_NEWGAMES_SUCCESS:
+      return {
+        ...state,
+        collection: {
+          data: action.data,
+          isLoading: false
         }
       };
     case FETCH_GAME_REQUEST:

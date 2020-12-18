@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
-
+import { connect } from 'react-redux'
 import { 
   LeftMenu,
   GeneralWhiteText,
  } from '../common/index.styled';
- import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import MenuList from '@material-ui/core/MenuList';
 import MenuItem from '@material-ui/core/MenuItem';
+import { fetchTopGames, fetchGames, fetchNewGames } from "../../redux/actions/games";
 
 const LeftMenuStyle = makeStyles(() => ({
   root: {
@@ -18,26 +19,42 @@ const LeftMenuStyle = makeStyles(() => ({
   },
 }))
 
-function Leftmenu() {
-
+function Leftmenu(props) {
+  const { fetchTopGames, fetchGames, fetchNewGames} = props;
   const classes = LeftMenuStyle();
+
+ 
     
   return (
       <LeftMenu className={classes.menycontainer}>
         <GeneralWhiteText variant="h6">Menu</GeneralWhiteText>
         <MenuList>
-          <MenuItem className={classes.root} component={Link} to={`/`}>
+          <MenuItem className={classes.root} onClick={() =>fetchGames()} component={Link} to={`/`}>
             <GeneralWhiteText className={classes.root} variant="inherit">Home</GeneralWhiteText>
           </MenuItem>
           <MenuItem className={classes.root}>
-            <GeneralWhiteText className={classes.root} variant="inherit">Top 30 Games</GeneralWhiteText>
+            <GeneralWhiteText className={classes.root} onClick={() =>fetchTopGames()} variant="inherit">Highest rated games</GeneralWhiteText>
           </MenuItem>
           <MenuItem className={classes.root}>
-            <GeneralWhiteText className={classes.root} variant="inherit">Release</GeneralWhiteText>
+            <GeneralWhiteText className={classes.root} onClick={() =>fetchNewGames()} variant="inherit">New releases</GeneralWhiteText>
           </MenuItem>
         </MenuList>
       </LeftMenu>
   )
 }
 
-export default Leftmenu;
+const mapStateToProps = (state) => { 
+
+  return {
+ 
+  }
+}
+const mapDispatchToProps = { 
+  fetchTopGames,
+  fetchGames,
+  fetchNewGames
+
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Leftmenu)
+
