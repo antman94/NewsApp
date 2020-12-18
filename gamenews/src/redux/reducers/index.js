@@ -1,8 +1,10 @@
 import { combineReducers } from "redux";
 import games from "./games";
-import users from "./users"
+import auth from '../reducers/users/auth';
+import message from '../reducers/users/message';
 
 export default combineReducers({
   games,
-  users
+  auth,
+  message
 });
