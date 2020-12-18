@@ -184,18 +184,17 @@ hr { border: 2px solid #333; }
 
 .navbar { display: flex; justify-content: center; background: $header-bg; }
 
-.navbar-ul { 
+.navbar-list { 
     list-style: none; 
     height: 60px;
-    width: 70%;
+    width: 80%;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
 
-    .navbar-li {
+    .category-btn {
         position: relative;
         padding: 6px 0;
-        cursor: pointer;
 
         &:before,
         &:after {
@@ -233,7 +232,7 @@ hr { border: 2px solid #333; }
     }
 }
 
-.navbar-li,
+.category-btn,
 .input-highlight,
 .search-input { 
     font-family: $font-stack;

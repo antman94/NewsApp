@@ -1,38 +1,80 @@
-import React from 'react';
-import SearchBar from './SearchBar';
+import React, { useState } from 'react';
+import SearchBar from './SearchBar'; 
+// import FilterButton from './FilterButton';
+import { makeStyles } from '@material-ui/core/styles';
+
+
+const useStyles = makeStyles(() => ({
+
+  activeButton: {
+    fontFamily: 'Open Sans',
+    fontSize: '1em',
+    fontWeight: '700',
+    color: '#DBFE00',
+    textTransform: 'uppercase'
+  }
+}))
 
 const platforms = [
-    {
-      name: 'Playstation',
-      id: 1,
-    },
-    {
-      name: 'XBOX',
-      id: 2,
-    },
-    {
-      name: 'PC',
-      id: 3,
-    },
-    {
-      name: 'Nintendo',
-      id: 4,
-    }
-  ];
+  {
+    name: 'All',
+    id: 0,
+    active: false
+  },
+  {
+    name: 'Playstation',
+    id: 1,
+    active: false
+  },
+  {
+    name: 'XBOX',
+    id: 2,
+    active: false
+  },
+  {
+    name: 'PC',
+    id: 3,
+    active: false
+  },
+  {
+    name: 'Nintendo',
+    id: 4,
+    active: false
+  }
+];
 
 const TopNavbar = () => {
+  const [active, setActive] = useState(false);
+  const classes = useStyles();
+
+  const handleClick = (e) => {
+    setActive(e.target.name);
+  }
+
     return (
         <div>
             <hr />
             <div className='navbar'>
-                <ul className='navbar-ul'>
+                <div className='navbar-list'>
                     {platforms.map((platform, id) => (
-                        <li className='navbar-li' key={id} name={platform.name}>
+                      platform.name === active ? 
+                      <button
+                        onClick={handleClick}
+                        className={classes.activeButton}
+                        key={id}
+                        name={platform.name}>
                             {platform.name}
-                        </li>
+                      </button> :
+                      <button
+                        onClick={handleClick}
+                        className='category-btn'
+                        key={id}
+                        name={platform.name}>
+                            {platform.name}
+                      </button>
                     ))}
                     <SearchBar />
-                </ul>
+                </div>
             </div>
             <hr />
         </div>
