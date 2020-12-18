@@ -141,3 +141,7 @@ label {
     margin-top: 8px;
     margin-bottom: 30px;
 }*/
+
+.logout-btn {
+    cursor:pointer;
+}

@@ -182,7 +182,13 @@ const Header = (props) => {
 						>Sign In</button>
 				</Modal>
 				{props.isLoggedIn ? 
-				<h3 className='login-btn'>{loggedInUser.username}</h3> :
+				<span>
+					<GeneralWhiteText
+						onClick={logOut}
+						className='logout-btn'
+						>LOG OUT</GeneralWhiteText>
+					<h3 className='login-btn'>{loggedInUser.username}</h3>
+				</span>	:
 				<button className='login-btn' onClick={() => setLoginModalIsOpen(true)}>Login</button>
 			}
 				
