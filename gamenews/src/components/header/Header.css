@@ -80,13 +80,25 @@
     color: white;
 }*/
 
-.nameinput:hover {
+/*.nameinput:hover {
     background-color: white;
+}*/
+
+.nameinput {
+    color: white;
+}
+
+.passwordwarning {
+    color: orangered;
 }
 
 .bottomtext {
     color: white;
     margin-left: 30px;
+}
+
+.loginconfirmed {
+    color: green;
 }
 
 .linktologin {
