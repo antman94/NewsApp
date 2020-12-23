@@ -1,6 +1,7 @@
 import {
   FETCH_NEWGAMES_SUCCESS,
   FETCH_TOPGAMES_SUCCESS,
+  FETCH_SEARCHGAMES_SUCCESS,
   FETCH_GAMES_REQUEST,
   FETCH_GAMES_SUCCESS,
   FETCH_GAMES_ERROR,
@@ -14,6 +15,8 @@ export const selectGamesisLoading = (state) => state.games.collection.isLoading;
 export const selectGamesErr = (state) => state.games.collection.err;
 
 export const selectTopGames = (state) => state.games.collection.data;
+
+export const selectSearchGames = (state) => state.games.collection.data;
 
 export const selectNewGames = (state) => state.games.collection.data;
 
@@ -55,6 +58,14 @@ const games = (state = {collection: {}}, action) => {
           isLoading: false
         }
       };
+    case FETCH_SEARCHGAMES_SUCCESS:
+      return {
+        ...state,
+        collection: {
+          data: action.data,
+          isLoading: false
+        }
+      };  
     case FETCH_NEWGAMES_SUCCESS:
       return {
         ...state,

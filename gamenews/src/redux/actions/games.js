@@ -75,3 +75,19 @@ export const fetchNewGames = () => async dispatch => {
   }
 };
 
+export const FETCH_SEARCHGAMES_SUCCESS = "FETCH_SEARCHGAMES_SUCCESS";
+
+export const fetchSearchGames = (query) => async dispatch => {
+  await dispatch({ type: FETCH_GAMES_REQUEST,});
+  try {
+    const response = await axios.get(
+      `https://api.rawg.io/api/games?parent_platforms=1,2,3,7&search=${query}${key}`);
+    return dispatch({
+      type: FETCH_SEARCHGAMES_SUCCESS,
+      data: response.data,
+    });
+  } catch (err) {
+    return dispatch({ type: FETCH_GAMES_ERROR, err,  });
+  }
+};
+

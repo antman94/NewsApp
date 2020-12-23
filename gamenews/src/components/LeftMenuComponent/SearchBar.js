@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
+
+import { fetchSearchGames } from '../../redux/actions/games'
 import SearchIcon from '@material-ui/icons/Search';
 
 class SearchBar extends Component {
@@ -8,8 +11,6 @@ class SearchBar extends Component {
         this.state = {
             inputValue: ''
         };
-
-        this.onInputChange = this.onInputChange.bind(this);
     }
 
     onInputChange = (e) => {
@@ -17,7 +18,11 @@ class SearchBar extends Component {
 
         this.setState({
             inputValue: value
-        });
+        }, () => {
+            if ( this.state.inputValue.length > 3 ) {
+                this.props.fetchSearchGames(this.state.inputValue)
+            }
+        })
     }
 
     render() {
@@ -43,4 +48,15 @@ class SearchBar extends Component {
     }
 }
 
-export default SearchBar;
+const mapStateToProps = (state) => { 
+    return {
+    }
+}
+const mapDispatchToProps = { 
+    fetchSearchGames 
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchBar)
+
+  
+
