@@ -38,7 +38,6 @@ const Header = (props) => {
 	}
 	
 	const handleChangeLogin = (e) => {
-		console.log(e.target)
 		setLoginData({...loginData,[e.target.name]: e.target.value})
 	}
 	/* 
