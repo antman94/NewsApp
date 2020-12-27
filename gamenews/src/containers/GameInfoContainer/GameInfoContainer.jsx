@@ -18,7 +18,8 @@ import nintendo from '../../assets/logos/platforms/nintendo-switch.png';
 import linux from '../../assets/logos/platforms/linux-1.png';
 import mac from '../../assets/logos/platforms/mac-os-logo.png';
 import android from '../../assets/logos/platforms/android.png';
-import ios from '../../assets/logos/platforms/app-store.png'
+import ios from '../../assets/logos/platforms/app-store.png';
+import CarouselFunc from '../../components/Carousel/Carousel';
 
 const useStyles = makeStyles(() => ({
   centerdiv: {
@@ -118,9 +119,11 @@ export const GameInfoContainer = (props) => {
   }
   const gameId = props.match.params.gameId;
   
+  
   useEffect(() => {
     fetchGame(gameId);
   }, [fetchGame, gameId])
+
 
   useEffect(() => { 
     if(isLoading === false){
@@ -210,6 +213,9 @@ export const GameInfoContainer = (props) => {
             </div>
             <div>
               {gameinfo.clip && <ReactPlayer url={gameinfo.clip.clip} loop={true} controls={true} playing={true} volume={0} width='400px' height='300px' />}
+            </div>
+            <div>
+              <CarouselFunc />
             </div>
           </div>          
         </div>
