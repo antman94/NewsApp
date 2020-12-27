@@ -25,6 +25,7 @@ export const FETCH_GAMES_REQUEST = "FETCH_GAMES_REQUEST";
 export const FETCH_GAMES_SUCCESS = "FETCH_GAMES_SUCCESS";
 export const FETCH_GAMES_ERROR = "FETCH_GAMES_ERROR";
 
+
 export const fetchGames = () => async dispatch => {
   await dispatch({ type: FETCH_GAMES_REQUEST });
   try {
@@ -37,5 +38,24 @@ export const fetchGames = () => async dispatch => {
     });
   } catch (err) {
     return dispatch({ type: FETCH_GAMES_ERROR, err });
+  }
+};
+
+export const FETCH_SCREENSHOTS_REQUEST = "FETCH_SCREENSHOTS_REQUEST";
+export const FETCH_SCREENSHOTS_SUCCESS = "FETCH_SCREENSHOTS_SUCCESS";
+export const FETCH_SCREENSHOTS_ERROR = "FETCH_SCREENSHOTS_ERROR";
+
+export const fetchScreenshots = (id) => async dispatch => {
+  await dispatch({ type: FETCH_SCREENSHOTS_REQUEST });
+  try {
+    const response = await axios.get(
+      `https://api.rawg.io/api/games/${id}/screenshots${key}`
+    );
+    return dispatch({
+      type: FETCH_SCREENSHOTS_SUCCESS,
+      data: response.data, id,
+    });
+  } catch (err) {
+    return dispatch({ type: FETCH_SCREENSHOTS_ERROR, err, id});
   }
 };

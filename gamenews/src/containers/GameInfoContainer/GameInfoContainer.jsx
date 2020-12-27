@@ -215,7 +215,7 @@ export const GameInfoContainer = (props) => {
               {gameinfo.clip && <ReactPlayer url={gameinfo.clip.clip} loop={true} controls={true} playing={true} volume={0} width='400px' height='300px' />}
             </div>
             <div>
-              <CarouselFunc />
+              <CarouselFunc gameId={gameId} />
             </div>
           </div>          
         </div>
