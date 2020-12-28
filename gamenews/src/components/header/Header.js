@@ -14,18 +14,21 @@ const Header = (props) => {
 	
 	const [ modalIsOpen, setModalIsOpen ] = useState(false)
 	const [ loginmodalIsOpen, setLoginModalIsOpen ] = useState(false)
-	const [loginData, setLoginData] = useState({
+	const initialStateLogin = {
 		username: '',
 		password: '',
-	});
-	const [signupData, setSignupData] = useState({
+	};
+	const initialStateSignup = {
 		username: '',
 		password: '',
 		confirmPassword: '',
-	});
+	};
+	const [loginData, setLoginData] = useState(initialStateLogin);
+	const [signupData, setSignupData] = useState(initialStateSignup);
 
 	const loggedInUser = JSON.parse(localStorage.getItem("user"));
 	const { dispatch, message } = props;
+	
 	const currentDate = '';
 
 /* 
@@ -34,11 +37,11 @@ const Header = (props) => {
  */
 	const openLoginModal = () => {
 		dispatch(clearMessage())
+		setLoginData(initialStateLogin);
 		setLoginModalIsOpen(true)
 	}
 	
 	const handleChangeLogin = (e) => {
-		console.log(e.target)
 		setLoginData({...loginData,[e.target.name]: e.target.value})
 	}
 	/* 
@@ -49,7 +52,7 @@ const Header = (props) => {
 	const handleClickLogin = () => {
 			dispatch(login(loginData.username, loginData.password))
 				.then(() => {
-					setLoginData('');
+					setLoginData(initialStateLogin);
 					setLoginModalIsOpen(false);
 				})
 				.catch((err) => {
@@ -71,7 +74,7 @@ const Header = (props) => {
 		if(password === confirmPassword) {
 			dispatch(register(username, password))
 			.then(() => {
-				setSignupData('');
+				setSignupData(initialStateSignup);
 				setModalIsOpen(false);
 				setLoginModalIsOpen(true);
 				alert('Signup succesful! WElcome ' + username);
@@ -88,8 +91,8 @@ const Header = (props) => {
 	 */
 	const handleClickNoAccount = () => {
 		dispatch(clearMessage())
-		setSignupData('');
-		setLoginData('');
+		setSignupData(initialStateSignup);
+		setLoginData(initialStateLogin);
 		setLoginModalIsOpen(false);
 		setModalIsOpen(true);
 	}
@@ -98,8 +101,8 @@ const Header = (props) => {
 	*		fields.
 	 */
 	const handleClickGoToLogin = () => {
-		setSignupData('');
-		setLoginData('');
+		setSignupData(initialStateSignup);
+		setLoginData(initialStateLogin);
 		setModalIsOpen(false);
 		setLoginModalIsOpen(true);
 	}

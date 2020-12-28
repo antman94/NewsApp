@@ -104,29 +104,33 @@ function GameCard({game}) {
   return (
     <Card className={classes.root}>
       <CardActionArea  component={Link} to={`/gameInfo/${game.id}`}>
-        <CardMedia
-          className={classes.media}
-          image={game.background_image}
-          title={game.name}
+        {game.background_image &&
+          <CardMedia
+            className={classes.media}
+            image={game.background_image}
+            title={game.name}
         />
+        }
         <CardContent className={classes.CardContainer}>
           <GeneralWhiteText gutterBottom  className={classes.GameTitle}>
             {game.name}
           </GeneralWhiteText>
-          <div className={classes.IconDiv}  >
-            {game.parent_platforms.map((platform) => (
-              <img className={classes.Icons} 
-              key={platform.platform.id} 
-              src={dictionary[platform.platform.slug]} 
-              alt={platform.platform.name} />
-              ))
-            } 
-            {game.metacritic && <div style={{'position': 'absolute', 'left':'230px','display':'flex','alignItems':'baseline'}}>
-              <GeneralWhiteText style={{'marginRight': '5px'}}>Metacritic</GeneralWhiteText> 
-              <div style={{'width': '25px','lineHeight': '18px','borderRadius': '20%','textAlign': 'center','fontSize': '13px','fontWeight': 'bolder'}}
-               className={scoreColor}>{game.metacritic}</div>
-            </div>}
-          </div>           
+          { game.parent_platforms &&
+            <div className={classes.IconDiv}  >
+              {game.parent_platforms.map((platform) => (
+                <img className={classes.Icons} 
+                key={platform.platform.id} 
+                src={dictionary[platform.platform.slug]} 
+                alt={platform.platform.name} />
+                ))
+              } 
+              {game.metacritic && <div style={{'position': 'absolute', 'left':'230px','display':'flex','alignItems':'baseline'}}>
+                <GeneralWhiteText style={{'marginRight': '5px'}}>Metacritic</GeneralWhiteText> 
+                <div style={{'width': '25px','lineHeight': '18px','borderRadius': '20%','textAlign': 'center','fontSize': '13px','fontWeight': 'bolder'}}
+                className={scoreColor}>{game.metacritic}</div>
+              </div>}
+            </div>  
+          }         
           <GeneralWhiteText className={classes.releaseContainer} variant="body2"  component="p">
             Release Date <span style={{'position': 'absolute', 'left':'255px'}}>{game.released}</span>
           </GeneralWhiteText> 

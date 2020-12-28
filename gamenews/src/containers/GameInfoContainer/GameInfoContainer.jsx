@@ -138,7 +138,6 @@ export const GameInfoContainer = (props) => {
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [classes.scoreColor2, classes.scoreColor3, isLoading])
-
   return (
     <div>
       {isLoading && <div className={classes.centerdiv}><CircularProgress style={{'color': 'yellow'}}/></div>}
@@ -178,7 +177,9 @@ export const GameInfoContainer = (props) => {
             </div>
             <div className={classes.aboutText}>
               <GeneralWhiteText  variant="h6"><strong>About</strong></GeneralWhiteText>
-              <GeneralWhiteText variant='body1'>{gameinfo.description_raw.replace(/###/g,'')}</GeneralWhiteText>
+              <GeneralWhiteText
+                variant='body1'
+                dangerouslySetInnerHTML={{ __html: gameinfo.description }} />
             </div>
             <div>
               <GeneralWhiteText  variant="h6"><strong>Publishers</strong></GeneralWhiteText>
