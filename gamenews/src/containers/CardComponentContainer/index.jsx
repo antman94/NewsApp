@@ -24,18 +24,22 @@ function CardComponentContainer(props) {
   const { games, err, isLoading, fetchGames} = props;
 
   useEffect(() => {
-    fetchGames();
+    fetchGames('1,2,3,7');
   }, [fetchGames])
 
   return (
     <CardContainer>
       {isLoading && <div className={classes.centerdiv}><CircularProgress style={{'color': 'yellow'}}/></div>}
-      {games && (
+      { !isLoading && 
         <Fragment>
-          {games.results.length === 0 && (<Paragraph>No games found</Paragraph>)}
-          {games.results.map((game) => (<GameCard key={game.id} game={game}/>))}
+          { games && 
+            <Fragment>
+              {games.results.length === 0 && (<Paragraph>No games found</Paragraph>)}
+              {games.results.map((game) => (<GameCard key={game.id} game={game}/>))}
+            </Fragment>
+          }
         </Fragment>
-      )}
+      }
       {err && <div className={classes.centerdiv}>👋 Hello kioskmongo!💩 An error occurred! Holey moley! This really sucks 🥺 Message: {err.message}</div>}
     </CardContainer>
   )
