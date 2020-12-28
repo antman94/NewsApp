@@ -15,20 +15,8 @@ class Form extends React.Component {
         }
         
     }
-    /*-------------------------------------------------------------------------------------------*/ 
-        /*formValid = (formErrors) => {
-            let valid = true;
-        
-            Object.values(formErrors).forEach(val => {
-            val.length > 0 && (valid = false);
-        });
-
-        return valid;
-        };*/
     
     /*------------------------------------------------------------------------------------------*/ 
-
-        /*this.handleEvent = this.handleEvent.bind(this)*/
 
         validate = () => {
             let nameError = "";
@@ -44,30 +32,18 @@ class Form extends React.Component {
 
             if (!this.state.password || this.state.password === undefined) {
                 passwordError = "Password cannot be blank";
-                /*this.setState({passwordError: "Password cannot be blank"});
-                this.setState({password: ""})  /*Reset password 
-                console.log("Password cannot be blank");*/
                 return false;
             }
 
             if (this.state.password.length < 5) {
                 passwordError = "Password is too short!";
-                /*this.setState({lengthError: "Password is too short!"});
-                this.setState({password: ""}) /*Reset password
-                this.setState({password: ""})*/ 
                 return false;
             }
 
             if (this.state.password.length > 5 && this.state.username.length > 1)  {
                 console.log("Access Granted");
-                /*this.setState({loginconfirmed: "Access Granted"});*/
                 return true;
             }
-
-            /*if (this.state.password.length > 5 && this.state.username < 1 )  {
-                this.setState({lengthError: "Name cannot be blank"});
-                return false;
-            }*/
 
 
             if (nameError) {
@@ -116,15 +92,6 @@ class Form extends React.Component {
         }
 
 
-        /*const { name, value } = e.target;
-
-        if (formValid(this.credentials.formErrors)) {
-            console.log(
-                "First name: " 
-            );
-        } else { console.error("Form invalid") }*/
-
-        /*value={this.state.username}*/
 
         };
 
@@ -150,7 +117,6 @@ class Form extends React.Component {
                     <input type="password" value={this.state.password} onChange={this.handlePasswordChange} className="nameinput"></input><br />
                     <div className="passwordwarning"><h2>{this.state.passwordError}</h2></div>
                     <div className="passwordwarning"><h2>{this.state.lengthError}</h2></div>
-                    {/*<div className="loginconfirmed"><h2>{this.state.loginconfirmed}</h2></div>*/}
 
                     <h3 className="bottomtext">Don't have an account?<span className="linktologin">Click Here</span></h3>
                     <button type="submit" className="loginbutton">Sign In</button>
