@@ -74,6 +74,10 @@
     height: 40px;
     margin-top: 8px;
     margin-bottom: 30px;
+    color: white;
+    font-family: 'Arial';
+    font-size: 14px;
+    padding-left: 15px;
 }
 
 /*.nameinput:active {
@@ -104,6 +108,7 @@
 .linktologin {
     color: greenyellow;
     margin-left: 90px;
+    cursor: pointer;
 }
 
 label {
@@ -150,12 +155,12 @@ label {
     margin-left: 20px;
 }
 
-/*.loginnameinput 
-    background-color: transparent;
-    border: 2px solid white;
-    border-radius: 20px;
-    width: 300px;
-    height: 40px;
-    margin-top: 8px;
-    margin-bottom: 30px;
-}*/
+.logout-btn {
+    cursor:pointer;
+}
+.error-message {
+    color: red !important;
+}
+.error-message-container {
+    padding: 30px 0 0 90px;
+}

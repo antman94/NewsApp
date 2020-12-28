@@ -6,28 +6,24 @@ import Wishlist from './components/header/Wishlist';
 import MyLibrary from './components/header/MyLibrary';
 import News from './components/header/News';
 import { AppContainer } from './components/common/index.styled';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import CardComponentContainer from './containers/CardComponentContainer';
+import GameInfoContainer from './containers/GameInfoContainer/GameInfoContainer';
 import Leftmenu from './components/LeftMenuComponent/LeftMenu';
+import TopNavbar from './components/Navbar/TopNavbar';
 
 function App() {
 
   return (
-    <div className="App">
+    <Router>
       <Header />
-      <Router>
+      <TopNavbar />
+      <Leftmenu />
         <Switch>
           <Route path="/" exact component={CardComponentContainer}/>
-          <Route path="/wishlist" component={Wishlist}/>
-          <Route path="/mylibrary" component={MyLibrary}/>
-          <Route path="/news" component={News}/>
-          {/*<Route path="card" component={CardComponentContainer}/>*/}
+          <Route path="/gameInfo/:gameId" component={GameInfoContainer}/>
         </Switch>  
-      </Router>
-
-      <AppContainer>
-        <Leftmenu />
-      </AppContainer>
-    </div>
+    </Router>
   );
 }
 

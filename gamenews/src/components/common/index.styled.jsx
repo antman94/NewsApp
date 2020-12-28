@@ -4,28 +4,27 @@ import {
 } from '@material-ui/core';
 
 export const AppContainer = styled.div`
-  width: 100%;
+  width: 80%;
   min-height: 100%;
 `
 export const GeneralWhiteText = styled(Typography)`
   color: #FFFFFF;
-  font-size: 14px;
-  font-family: 'Lato';
 `
 
 export const CardContainer = styled.div`
-  width: 80%;
-  background-color: #151515;
-  min-height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  width: 85%;
   padding: 15px;
   float: right;
 `
 
 export const LeftMenu = styled.div`
-width: 20%;
-min-height: 100vh;
+width: 15%;
 padding-top: 20px;
-padding-left: 35px;
+padding-left: 15px;
 background: #111111;
 float: left;
+
 `
